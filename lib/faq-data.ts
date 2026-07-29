@@ -5,43 +5,43 @@ export interface FAQItem {
 
 export const FAQ_ITEMS: FAQItem[] = [
   {
-    question: "What is MESOB Center?",
+    question: "What is DICDO?",
     answer:
-      "MESOB Center (Modern Ethiopian Service for Organized Benefits) is a government initiative that brings multiple federal and municipal services under one roof. Citizens can access passport processing, business licensing, civil registration, tax services, and more — all in one convenient location.",
+      "Dire Integrated Community Development Organization (DICDO) is a registered indigenous, non-governmental, and non-political development organization operating in Ethiopia since 2015. We work to empower local communities—especially women, youth, and vulnerable groups—by providing tools, knowledge, and resources to build a sustainable and resilient future.",
   },
   {
-    question: "Where are MESOB Centers located?",
+    question: "Where does DICDO operate?",
     answer:
-      "MESOB Centers are currently operational in Addis Ababa, Harar, and Dire Dawa, with plans to expand to 30+ cities nationwide. Each center features 24 dedicated service counters staffed by trained professionals ready to assist with a wide range of government services.",
+      "DICDO operates across multiple communities in Ethiopia, including Dire Dawa, Addis Ababa, and surrounding areas. We currently serve 15 communities and continue to expand our reach to more regions in need of development support.",
   },
   {
-    question: "What documents should I bring?",
+    question: "What programs does DICDO offer?",
     answer:
-      "Required documents vary by service. Generally, you'll need a valid government-issued ID (kebele ID or passport), passport-sized photographs, and any relevant supporting documents. We recommend checking the specific service requirements on our portal before your visit to ensure you have everything you need.",
+      "DICDO delivers holistic, community-centered development services across seven key areas: Peacebuilding & Conflict Resolution, Education & Literacy, Women's & Youth Empowerment, Health & Nutrition, WASH (Water, Sanitation & Hygiene), Environmental Protection, and Inclusion & Human Rights.",
   },
   {
-    question: "How long does service processing take?",
+    question: "How can I volunteer with DICDO?",
     answer:
-      "Processing times vary by service type, but most common services are completed within minutes to hours — a dramatic improvement over traditional processing that could take days. Document processing, license applications, and certificate issuance are typically handled the same business day.",
+      "DICDO welcomes volunteers who share our vision of peaceful and self-sufficient communities across Ethiopia. You can reach out to us via email at dicdodd@gmail.com or call +251 915005166 to discuss volunteer opportunities that match your skills and interests.",
   },
   {
-    question: "Are there any fees for services?",
+    question: "How can I make a donation?",
     answer:
-      "Yes, service fees apply and vary depending on the type of service. All fees are transparent and published in advance — no hidden charges. You'll know exactly what you need to pay before you visit. Payment can be made at the center using approved methods.",
+      "You can make a donation through our bank accounts at Commercial Bank of Ethiopia (Account: 1000485854987) or Bank of Abyssinia (Account: 16430986), both under the name DICDO. Your generous contribution helps us continue our vital work in peacebuilding, education, women's empowerment, and community development.",
   },
   {
-    question: "Can someone else visit on my behalf?",
+    question: "Is DICDO a registered organization?",
     answer:
-      "In most cases, services require the applicant to be present in person with valid identification. However, certain document collection services may be delegated. Contact your nearest MESOB Center for specific guidance on authorized representation and any required power of attorney documents.",
+      "Yes, DICDO is a registered indigenous, non-governmental, and non-political development organization operating in compliance with Ethiopian law. We are registered with the Authority for Civil Society Organizations (ACSO) and are officially recognized by the National Election Board of Ethiopia (NEBE) as an accredited election observer organization.",
   },
   {
-    question: "Is MESOB Center open on weekends?",
+    question: "Does DICDO partner with international organizations?",
     answer:
-      "MESOB Centers operate during standard government working hours, Sunday through Thursday, from 8:00 AM to 5:00 PM (local Ethiopian time). Some digital services may be accessible 24/7. Check with your local center for specific holiday schedules and extended hours.",
+      "Yes, DICDO collaborates with international partners including the Life & Peace Institute (LPI) for peacebuilding initiatives. These partnerships enable us to leverage collective expertise, resources, and networks for greater impact across Ethiopian communities.",
   },
   {
-    question: "How is MESOB different from traditional government offices?",
+    question: "How can I contact DICDO?",
     answer:
-      "Unlike traditional offices where you may need to visit multiple buildings across the city, MESOB Center integrates 8+ government institutions under one roof with 67+ services. This means faster processing, unified service counters, transparent fees, and a citizen-centric approach designed to save you time and effort.",
+      "You can contact DICDO by email at demessafworke12@gmail.com or dicdodd@gmail.com, by phone at +251 915005166 / +251 975047055 / +251 911435422, or visit our offices in Addis Ababa (Yeka Sub City, Woreda 05) or Dire Dawa (Kebele 03 Area).",
   },
 ];
