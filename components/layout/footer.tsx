@@ -45,17 +45,17 @@ export function Footer() {
     <footer className="relative border-t border-border/60 bg-background">
       {/* CTA - matches the Stats section style */}
       <div className="primary-band relative overflow-hidden border-b border-primary-foreground/20">
-        {/* Rich background pattern: dots + diagonal crosshatch */}
+        {/* Grid pattern */}
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-0 opacity-[0.5]"
+          className="pointer-events-none absolute inset-0"
           style={{
             backgroundImage:
-              "radial-gradient(circle, rgba(255,255,255,0.08) 1px, transparent 1px), linear-gradient(45deg, rgba(255,255,255,0.025) 1px, transparent 1px), linear-gradient(-45deg, rgba(255,255,255,0.025) 1px, transparent 1px)",
-            backgroundSize: "20px 20px, 48px 48px, 48px 48px",
+              "linear-gradient(to right, rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.1) 1px, transparent 1px)",
+            backgroundSize: "40px 40px",
           }}
         />
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_50%,rgba(255,255,255,0.08),transparent)]" />
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_50%,rgba(255,255,255,0.1),transparent)]" />
         <div className="container relative mx-auto px-6 py-16 text-center lg:py-20">
           <h2 className="text-2xl font-bold tracking-tight text-primary-foreground sm:text-3xl">
             Building Peaceful &amp; Self-Sufficient Communities

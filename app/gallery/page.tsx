@@ -224,65 +224,33 @@ export default function GalleryPage() {
     <div className="flex min-h-screen flex-col">
       <Navbar />
       <main className="flex-1">
-        {/* ---- Hero Banner ---- */}
-        <section className="primary-band relative overflow-hidden py-28">
-          <div
-            className="pointer-events-none absolute inset-0 opacity-[0.04]"
-            style={{
-              backgroundImage:
-                "linear-gradient(to right, white 1px, transparent 1px), linear-gradient(to bottom, white 1px, transparent 1px)",
-              backgroundSize: "32px 32px",
-            }}
-          />
-          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_50%,rgba(255,255,255,0.07),transparent)]" />
-          <div className="container relative mx-auto px-6 lg:px-8">
-            <FadeIn direction="up" className="mx-auto max-w-3xl text-center">
-              <span className="mb-4 inline-flex w-fit rounded-full border border-accent/40 bg-accent/15 px-3 py-1 text-[11px] font-semibold uppercase tracking-widest text-accent">
-                Photo Gallery
-              </span>
-              <h1 className="text-4xl font-semibold tracking-tight text-primary-foreground sm:text-5xl">
-                Moments of{" "}
-                <span className="text-accent">Transformation</span>
-              </h1>
-              <p className="mt-5 text-base leading-relaxed text-primary-foreground/80">
-                Capturing moments of transformation, hope, and community empowerment
-                across Ethiopia — one photo at a time.
-              </p>
-            </FadeIn>
-          </div>
-
-          {/* Image count badge */}
-          <div className="absolute bottom-6 left-1/2 -translate-x-1/2 rounded-full border border-white/20 bg-white/10 px-5 py-1.5 text-xs font-medium text-white backdrop-blur-sm">
-            <Camera className="mr-1.5 inline-block h-3.5 w-3.5" />
-            {GALLERY_IMAGES.length} images total
-          </div>
-        </section>
-
-        {/* ---- Gallery Grid ---- */}
-        <section className="relative overflow-hidden py-20">
+        <div className="relative overflow-hidden">
           <div
             aria-hidden
             className="pointer-events-none absolute inset-0 opacity-[0.03] dark:opacity-[0.05] [background-image:linear-gradient(to_right,currentColor_1px,transparent_1px),linear-gradient(to_bottom,currentColor_1px,transparent_1px)] [background-size:40px_40px]"
           />
 
           <div className="container relative mx-auto px-6 lg:px-8">
-            <StaggerContainer>
-              <div className="grid gap-4 sm:grid-cols-2 md:gap-5 lg:grid-cols-3 xl:grid-cols-4">
-                {GALLERY_IMAGES.map((image, index) => (
-                  <StaggerItem key={image.id}>
-                    <GalleryCard
-                      image={image}
-                      index={index}
-                      onClick={() => openLightbox(index)}
-                    />
-                  </StaggerItem>
-                ))}
-              </div>
-            </StaggerContainer>
+            {/* Gallery grid */}
+            <FadeIn direction="up">
+              <StaggerContainer>
+                <div className="pt-20 grid gap-4 sm:grid-cols-2 md:gap-5 lg:grid-cols-3 xl:grid-cols-4">
+                  {GALLERY_IMAGES.map((image, index) => (
+                    <StaggerItem key={image.id}>
+                      <GalleryCard
+                        image={image}
+                        index={index}
+                        onClick={() => openLightbox(index)}
+                      />
+                    </StaggerItem>
+                  ))}
+                </div>
+              </StaggerContainer>
+            </FadeIn>
 
             {/* Back to home */}
             <FadeIn direction="up" delay={0.4}>
-              <div className="mt-14 text-center">
+              <div className="mt-14 pb-20 text-center">
                 <Button size="lg" asChild>
                   <Link href="/">
                     Back to home <ArrowRight className="h-4 w-4" />
@@ -291,7 +259,7 @@ export default function GalleryPage() {
               </div>
             </FadeIn>
           </div>
-        </section>
+        </div>
       </main>
       <Footer />
 
