@@ -137,6 +137,12 @@ export function Hero() {
 
             </div>
           ))}
+
+          {/* Edge fades to blend the image division seamlessly with the background */}
+          {/* Left edge fade for desktop (large screens) */}
+          <div className="pointer-events-none absolute bottom-0 left-0 top-0 z-10 hidden w-40 bg-gradient-to-r from-background to-transparent lg:block" />
+          {/* Top edge fade for mobile/tablet screens when content stacks vertically */}
+          <div className="pointer-events-none absolute left-0 right-0 top-0 z-10 h-24 bg-gradient-to-b from-background to-transparent lg:hidden" />
         </div>
       </div>
     </section>
