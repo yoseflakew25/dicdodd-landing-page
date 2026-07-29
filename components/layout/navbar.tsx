@@ -67,120 +67,132 @@ export function Navbar() {
   return (
     <header
       className={cn(
-        "sticky top-0 z-40 w-full transition-all duration-300 ease-out",
-        scrolled
-          ? "border-b border-border/60 bg-white/80 shadow-sm backdrop-blur-xl dark:bg-gray-900/80"
-          : "border-b border-transparent bg-transparent"
+        "sticky top-0 z-40 w-full transition-all duration-200 ease-out",
+        scrolled ? "py-3 px-4 md:px-8 lg:px-12" : "py-0 px-0"
       )}
     >
-      <div className=" flex h-16 items-center justify-between gap-4 md:px-12 px-4">
-        {/* Logo */}
-        <Link href="/" className="flex shrink-0 items-center" aria-label="DICDO home">
-          <Image
-            src="/images/logo.png"
-            alt="DICDO Logo"
-            width={256}
-            height={128}
-            className="object-contain"
-            priority
-          />
-        </Link>
-
-        {/* Desktop navigation */}
-        <nav className="hidden items-center gap-0.5 lg:flex" aria-label="Main navigation">
-          {NAV_LINKS.map((l) => (
-            <Link key={l.label} href={l.href} className={navLinkClass(l.href)}>
-              {l.label}
-            </Link>
-          ))}
-        </nav>
-
-        {/* Desktop actions */}
-        <div className="hidden items-center gap-2 lg:flex">
-          <ThemeToggle
-            className={cn(
-              "transition-colors duration-200",
-              scrolled
-                ? "text-muted-foreground hover:bg-primary/10 hover:text-primary"
-                : "text-foreground/70 hover:bg-primary/10 hover:text-primary"
-            )}
-          />
-          <Link
-            href="/#support"
-            className="rounded-lg bg-primary px-6 py-2.5 text-sm font-semibold text-primary-foreground shadow-sm transition-all duration-200 hover:bg-primary/90 hover:shadow-md"
-          >
-            Donate
-          </Link>
-        </div>
-
-        {/* Mobile menu button */}
-        <div className="flex items-center gap-1 lg:hidden">
-          <ThemeToggle
-            className={cn(
-              "transition-colors duration-200",
-              scrolled
-                ? "text-muted-foreground hover:bg-accent/10 hover:text-accent"
-                : "text-foreground/70 hover:bg-primary/10 hover:text-primary"
-            )}
-          />
-          <Button
-            variant="outline"
-            size="icon"
-            className={cn(
-              "h-9 w-9 shrink-0 transition-colors duration-200",
-              scrolled
-                ? "border-border/60 text-muted-foreground"
-                : "border-foreground/20 text-foreground/70"
-            )}
-            onClick={() => setOpen((o) => !o)}
-            aria-label={open ? "Close menu" : "Open menu"}
-            aria-expanded={open}
-            aria-controls="mobile-nav"
-          >
-            {open ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
-          </Button>
-        </div>
-      </div>
-
-      {/* Mobile menu */}
-      {open && (
+      <div
+        className={cn(
+          "mx-auto transition-all duration-200 ease-out w-full overflow-hidden",
+          scrolled
+            ? "max-w-7xl rounded-2xl border border-border/60 bg-white/80 shadow-md backdrop-blur-xl dark:bg-gray-900/80"
+            : "border-b border-transparent bg-transparent"
+        )}
+      >
         <div
           className={cn(
-            "border-t lg:hidden",
-            scrolled
-              ? "border-border/60 bg-white/95 backdrop-blur-xl dark:bg-gray-900/95"
-              : "border-foreground/10 bg-white/95 backdrop-blur-xl dark:bg-gray-900/95"
+            "flex h-16 items-center justify-between gap-4 transition-all duration-200 ease-out",
+            scrolled ? "px-6 md:px-10" : "md:px-12 px-4"
           )}
         >
-          <div className="container space-y-4 px-6 py-4 lg:px-8">
-            <nav className="flex flex-col gap-1" aria-label="Mobile navigation">
-              {NAV_LINKS.map((l) => (
-                <Link
-                  key={l.label}
-                  href={l.href}
-                  onClick={() => setOpen(false)}
-                  className={cn(
-                    "rounded-md px-3 py-2.5 text-sm font-medium transition-colors duration-200",
-                    isActive(l.href)
-                      ? "bg-primary/15 text-primary"
-                      : "text-muted-foreground hover:bg-primary/10 hover:text-primary"
-                  )}
-                >
-                  {l.label}
-                </Link>
-              ))}
-            </nav>
+          {/* Logo */}
+          <Link href="/" className="flex shrink-0 items-center" aria-label="DICDO home">
+            <Image
+              src="/images/logo.png"
+              alt="DICDO Logo"
+              width={256}
+              height={128}
+              className="object-contain"
+              priority
+            />
+          </Link>
 
+          {/* Desktop navigation */}
+          <nav className="hidden items-center gap-0.5 lg:flex" aria-label="Main navigation">
+            {NAV_LINKS.map((l) => (
+              <Link key={l.label} href={l.href} className={navLinkClass(l.href)}>
+                {l.label}
+              </Link>
+            ))}
+          </nav>
+
+          {/* Desktop actions */}
+          <div className="hidden items-center gap-2 lg:flex">
+            <ThemeToggle
+              className={cn(
+                "transition-colors duration-200",
+                scrolled
+                  ? "text-muted-foreground hover:bg-primary/10 hover:text-primary"
+                  : "text-foreground/70 hover:bg-primary/10 hover:text-primary"
+              )}
+            />
             <Link
               href="/#support"
-              onClick={() => setOpen(false)}
-              className="flex w-full items-center justify-center rounded-lg bg-primary px-4 py-3 text-sm font-medium text-primary-foreground shadow-sm transition-all duration-200"
+              className="rounded-lg bg-primary px-6 py-2.5 text-sm font-semibold text-primary-foreground shadow-sm transition-all duration-200 hover:bg-primary/90 hover:shadow-md"
             >
-              Donate Now
+              Donate
             </Link>
           </div>
+
+          {/* Mobile menu button */}
+          <div className="flex items-center gap-1 lg:hidden">
+            <ThemeToggle
+              className={cn(
+                "transition-colors duration-200",
+                scrolled
+                  ? "text-muted-foreground hover:bg-accent/10 hover:text-accent"
+                  : "text-foreground/70 hover:bg-primary/10 hover:text-primary"
+              )}
+            />
+            <Button
+              variant="outline"
+              size="icon"
+              className={cn(
+                "h-9 w-9 shrink-0 transition-colors duration-200",
+                scrolled
+                  ? "border-border/60 text-muted-foreground"
+                  : "border-foreground/20 text-foreground/70"
+              )}
+              onClick={() => setOpen((o) => !o)}
+              aria-label={open ? "Close menu" : "Open menu"}
+              aria-expanded={open}
+              aria-controls="mobile-nav"
+            >
+              {open ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
+            </Button>
+          </div>
         </div>
-      )}
+
+        {/* Mobile menu */}
+        {open && (
+          <div
+            className={cn(
+              "border-t lg:hidden transition-all duration-300",
+              scrolled
+                ? "border-border/60 bg-transparent"
+                : "border-foreground/10 bg-white/95 backdrop-blur-xl dark:bg-gray-900/95"
+            )}
+          >
+            <div className="container space-y-4 px-6 py-4 lg:px-8">
+              <nav className="flex flex-col gap-1" aria-label="Mobile navigation">
+                {NAV_LINKS.map((l) => (
+                  <Link
+                    key={l.label}
+                    href={l.href}
+                    onClick={() => setOpen(false)}
+                    className={cn(
+                      "rounded-md px-3 py-2.5 text-sm font-medium transition-colors duration-200",
+                      isActive(l.href)
+                        ? "bg-primary/15 text-primary"
+                        : "text-muted-foreground hover:bg-primary/10 hover:text-primary"
+                    )}
+                  >
+                    {l.label}
+                  </Link>
+                ))}
+              </nav>
+
+              <Link
+                href="/#support"
+                onClick={() => setOpen(false)}
+                className="flex w-full items-center justify-center rounded-lg bg-primary px-4 py-3 text-sm font-medium text-primary-foreground shadow-sm transition-all duration-200"
+              >
+                Donate Now
+              </Link>
+            </div>
+          </div>
+        )}
+      </div>
     </header>
   );
 }
