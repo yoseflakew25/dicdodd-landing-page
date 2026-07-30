@@ -9,10 +9,6 @@ const pageVariants = {
   exit: { opacity: 0, y: -16 },
 };
 
-const pageTransition = {
-  duration: 0.35,
-  ease: [0.25, 0.4, 0, 1],
-};
 
 export function PageTransition({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
@@ -25,7 +21,10 @@ export function PageTransition({ children }: { children: React.ReactNode }) {
         initial="initial"
         animate="animate"
         exit="exit"
-        transition={pageTransition}
+        transition={{
+          duration: 0.35,
+          ease: [0.25, 0.4, 0, 1],
+        }}
         className="flex flex-1 flex-col"
       >
         {children}
