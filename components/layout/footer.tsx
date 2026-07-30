@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Mail, Phone, MapPin, Heart } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { BLUR_PLACEHOLDER } from "@/lib/placeholders";
 
 const COLUMNS = [
   {
@@ -95,6 +96,8 @@ export function Footer() {
               alt="DICDO Logo"
               width={256}
               height={128}
+              placeholder="blur"
+              blurDataURL={BLUR_PLACEHOLDER}
               className="object-contain h-14 w-auto"
             />
           </Link>

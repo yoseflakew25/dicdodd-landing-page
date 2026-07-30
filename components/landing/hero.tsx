@@ -6,6 +6,7 @@ import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Heart, Users, Shield } from "lucide-react";
+import { BLUR_PLACEHOLDER } from "@/lib/placeholders";
 
 const HERO_SLIDES = [
   {
@@ -39,28 +40,27 @@ export function Hero() {
     setCurrentSlide((prev) => (prev + 1) % HERO_SLIDES.length);
   }, []);
 
-  // Auto-advance slideshow every 5 seconds
   useEffect(() => {
     const interval = setInterval(nextSlide, 5000);
     return () => clearInterval(interval);
   }, [nextSlide]);
 
   return (
-    <section className="relative overflow-hidden border-b border-border/50 bg-background">
-      {/* Grid pattern background */}
+    <section className="relative overflow-hidden bg-background">
+      {/* Subtle grid pattern */}
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 z-0 opacity-[0.04] [background-image:linear-gradient(to_right,currentColor_1px,transparent_1px),linear-gradient(to_bottom,currentColor_1px,transparent_1px)] [background-size:32px_32px]"
       />
 
-      {/* Top-left accent line */}
+      {/* Soft radial glow behind text side */}
       <div
         aria-hidden
-        className="pointer-events-none absolute left-0 top-0 -z-10 h-px w-1/3 bg-gradient-to-r from-transparent via-primary/30 to-transparent"
+        className="pointer-events-none absolute left-0 top-0 z-0 h-full w-1/2 [background:radial-gradient(ellipse_80%_60%_at_10%_40%,hsl(var(--primary)/0.08),transparent)]"
       />
 
-      <div className="grid min-h-[85vh] lg:grid-cols-2 lg:items-center">
-        {/* Left — text content */}
+      <div className="relative grid min-h-[85vh] lg:grid-cols-2 lg:items-center">
+        {/* ── Left: text content ── */}
         <div className="container relative z-10 mx-auto flex flex-col justify-center px-6 py-20 lg:px-16 lg:py-0">
           <Badge
             variant="outline"
@@ -115,34 +115,34 @@ export function Hero() {
           </div>
         </div>
 
-        {/* Right — Edge-to-edge image slideshow (auto-advance only) */}
-        <div className="relative h-[400px] lg:h-[85vh] overflow-hidden">
-          {/* Slides */}
+        {/* ── Right: crossfade image slideshow ── */}
+        <div className="relative h-[400px] overflow-hidden lg:h-[85vh]">
+          {/* Mobile top fade */}
+          <div className="pointer-events-none absolute left-0 right-0 top-0 z-10 h-20 bg-gradient-to-b from-background to-transparent lg:hidden" />
+
           {HERO_SLIDES.map((slide, index) => (
             <div
               key={slide.src}
-              className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${index === currentSlide ? "opacity-100" : "opacity-0"
-                }`}
+              className="absolute inset-0"
+              style={{
+                opacity: index === currentSlide ? 1 : 0,
+                zIndex: index === currentSlide ? 10 : 0,
+                transition: "opacity 1400ms ease-in-out",
+              }}
             >
               <Image
                 src={slide.src}
                 alt={slide.alt}
                 fill
                 sizes="50vw"
+                placeholder="blur"
+                blurDataURL={BLUR_PLACEHOLDER}
                 priority={index === 0}
                 className="object-cover"
               />
-              {/* Dark gradient overlay for readability */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
-
             </div>
           ))}
-
-          {/* Edge fades to blend the image division seamlessly with the background */}
-          {/* Left edge fade for desktop (large screens) */}
-          <div className="pointer-events-none absolute bottom-0 left-0 top-0 z-10 hidden w-40 bg-gradient-to-r from-background to-transparent lg:block" />
-          {/* Top edge fade for mobile/tablet screens when content stacks vertically */}
-          <div className="pointer-events-none absolute left-0 right-0 top-0 z-10 h-24 bg-gradient-to-b from-background to-transparent lg:hidden" />
         </div>
       </div>
     </section>

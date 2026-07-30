@@ -1,6 +1,4 @@
 import type { Metadata } from "next";
-import { Navbar } from "@/components/layout/navbar";
-import { Footer } from "@/components/layout/footer";
 import { FAQ } from "@/components/landing/faq";
 
 export const metadata: Metadata = {
@@ -16,12 +14,8 @@ export const metadata: Metadata = {
 
 export default function FAQPage() {
   return (
-    <div className="flex min-h-screen flex-col">
-      <Navbar />
-      <main className="flex-1">
-        <FAQ />
-      </main>
-      <Footer />
-    </div>
+    <main className="flex-1">
+      <FAQ />
+    </main>
   );
 }

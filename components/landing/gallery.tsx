@@ -8,16 +8,27 @@ import { FadeIn } from "@/components/ui/motion";
 import { cn } from "@/lib/utils";
 
 /* ------------------------------------------------------------------ */
-/*  Safe image with fallback                                           */
+/*  Real gallery images — d1.jpg through d6.jpg (preview)             */
+/* ------------------------------------------------------------------ */
+const GALLERY_PREVIEW = Array.from({ length: 6 }, (_, i) => ({
+  id: i + 1,
+  src: `/images/gallery/d${i + 1}.jpg`,
+  alt: `DICDO gallery image ${i + 1}`,
+}));
+
+/* ------------------------------------------------------------------ */
+/*  Safe image with fallback                                          */
 /* ------------------------------------------------------------------ */
 function GalleryImg({
   src,
   alt,
   className,
+  priority,
 }: {
   src: string;
   alt: string;
   className?: string;
+  priority?: boolean;
 }) {
   const [failed, setFailed] = useState(false);
 
@@ -25,9 +36,7 @@ function GalleryImg({
     return (
       <div className={cn("flex items-center justify-center bg-gradient-to-br from-primary/5 to-accent/5", className)}>
         <div className="text-center text-muted-foreground">
-          <svg className="mx-auto h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-          </svg>
+          <Camera className="mx-auto h-8 w-8" />
           <p className="mt-1 text-xs">Image</p>
         </div>
       </div>
@@ -40,16 +49,12 @@ function GalleryImg({
       src={src}
       alt={alt}
       className={className}
-      loading="lazy"
+      loading={priority ? undefined : "lazy"}
+      fetchPriority={priority ? "high" : undefined}
       onError={() => setFailed(true)}
     />
   );
 }
-
-/* ------------------------------------------------------------------ */
-/*  Preview image placeholders                                         */
-/* ------------------------------------------------------------------ */
-const PREVIEW_COUNT = 6;
 
 /* ------------------------------------------------------------------ */
 /*  Gallery Section                                                     */
@@ -76,7 +81,7 @@ export function Gallery() {
         {/* Heading */}
         <FadeIn direction="up">
           <div className="mb-12 max-w-2xl">
-            <span className="mb-4 inline-flex w-fit rounded-full border border-accent/30 bg-accent/5 px-3 py-1 text-[11px] font-semibold uppercase tracking-widest text-accent">
+            <span className="mb-4 inline-flex w-fit rounded-full border border-primary/30 bg-primary/5 px-3 py-1 text-[11px] font-semibold uppercase tracking-widest text-primary">
               Photo Gallery
             </span>
             <h2 className="text-3xl font-semibold tracking-tight text-foreground">
@@ -92,17 +97,18 @@ export function Gallery() {
         {/* Image grid */}
         <FadeIn direction="up" delay={0.1}>
           <div className="grid gap-3 sm:grid-cols-2 md:grid-cols-3">
-            {Array.from({ length: PREVIEW_COUNT }, (_, i) => (
+            {GALLERY_PREVIEW.map(({ id, src, alt }) => (
               <div
-                key={i}
+                key={id}
                 className={cn(
                   "group relative aspect-[4/3] overflow-hidden rounded-2xl border border-border/60 bg-muted shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md",
-                  i === 0 && "sm:col-span-2 sm:row-span-2"
+                  id === 1 && "sm:col-span-2 sm:row-span-2"
                 )}
               >
                 <GalleryImg
-                  src={`/images/gallery/gallery-${i + 1}.jpg`}
-                  alt={`Gallery image ${i + 1}`}
+                  src={src}
+                  alt={alt}
+                  priority={id <= 2}
                   className="h-full w-full object-cover transition-all duration-500 group-hover:scale-105"
                 />
 

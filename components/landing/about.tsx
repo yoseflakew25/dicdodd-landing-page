@@ -1,10 +1,12 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Target, Eye, HandHeart, Users } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { FadeIn } from "@/components/ui/motion";
+import { BLUR_PLACEHOLDER } from "@/lib/placeholders";
 
 const VALUES = [
   { icon: HandHeart, title: "Respect & Dignity", description: "For every individual we serve" },
@@ -165,9 +167,17 @@ export function About() {
 
             {/* Leadership Contact */}
             <div className="mt-6 rounded-2xl border border-dashed border-accent/20 bg-accent/[0.02] p-5">
-              <div className="flex items-start gap-3">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-accent/10">
-                  <Users className="h-5 w-5 text-accent" />
+              <div className="flex items-start gap-4">
+                <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-full border-2 border-accent/30 bg-accent/10 shadow-sm">
+                  <Image
+                    src="/images/director/demisse.png"
+                    alt="Mr. Demissie Afework — Executive Director"
+                    fill
+                    sizes="56px"
+                    placeholder="blur"
+                    blurDataURL={BLUR_PLACEHOLDER}
+                    className="object-cover"
+                  />
                 </div>
                 <div>
                   <p className="text-xs font-semibold text-foreground">Mr. Demissie Afework</p>

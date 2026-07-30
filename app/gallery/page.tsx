@@ -6,12 +6,20 @@ import { motion, AnimatePresence } from "framer-motion";
 import { X, ChevronLeft, ChevronRight, ArrowRight, Camera } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { FadeIn, StaggerContainer, StaggerItem } from "@/components/ui/motion";
-import { Navbar } from "@/components/layout/navbar";
-import { Footer } from "@/components/layout/footer";
+
 import { cn } from "@/lib/utils";
 
 /* ------------------------------------------------------------------ */
-/*  Safe image with fallback                                           */
+/*  Real gallery images — d1.jpg through d35.jpg                      */
+/* ------------------------------------------------------------------ */
+const GALLERY_IMAGES = Array.from({ length: 35 }, (_, i) => ({
+  id: i + 1,
+  src: `/images/gallery/d${i + 1}.jpg`,
+  alt: `DICDO Gallery Image ${i + 1}`,
+}));
+
+/* ------------------------------------------------------------------ */
+/*  Safe image with fallback (uses next/image for optimization)       */
 /* ------------------------------------------------------------------ */
 function GalleryImg({
   src,
@@ -28,9 +36,7 @@ function GalleryImg({
     return (
       <div className={cn("flex items-center justify-center bg-gradient-to-br from-primary/5 to-accent/5", className)}>
         <div className="text-center text-muted-foreground">
-          <svg className="mx-auto h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-          </svg>
+          <Camera className="mx-auto h-10 w-10" />
           <p className="mt-1 text-xs">{alt.replace("DICDO Gallery Image ", "Image ")}</p>
         </div>
       </div>
@@ -48,15 +54,6 @@ function GalleryImg({
     />
   );
 }
-
-/* ------------------------------------------------------------------ */
-/*  Gallery data                                                       */
-/* ------------------------------------------------------------------ */
-const GALLERY_IMAGES = Array.from({ length: 36 }, (_, i) => ({
-  id: i + 1,
-  src: `/images/gallery/gallery-${i + 1}.jpg`,
-  alt: `DICDO Gallery Image ${i + 1}`,
-}));
 
 /* ------------------------------------------------------------------ */
 /*  Lightbox                                                           */
@@ -100,15 +97,17 @@ function Lightbox({
       {/* Counter */}
       <div className="absolute left-1/2 top-4 -translate-x-1/2 rounded-full bg-white/10 px-4 py-1.5 text-sm font-medium text-white backdrop-blur-sm">
         {currentIndex + 1} / {images.length}
-      </div>      {/* Previous */}
-        <button
-          onClick={(e) => {
-            e.stopPropagation();
-            onPrev();
-          }}
-          className="absolute left-4 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-white/10 text-white backdrop-blur-sm transition-all duration-200 hover:bg-white/20"
-          aria-label="Previous image"
-        >
+      </div>
+
+      {/* Previous */}
+      <button
+        onClick={(e) => {
+          e.stopPropagation();
+          onPrev();
+        }}
+        className="absolute left-4 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-white/10 text-white backdrop-blur-sm transition-all duration-200 hover:bg-white/20"
+        aria-label="Previous image"
+      >
         <ChevronLeft className="h-6 w-6" />
       </button>
 
@@ -129,15 +128,17 @@ function Lightbox({
             className="h-auto max-h-[85vh] w-auto rounded-2xl object-contain shadow-2xl"
           />
         </div>
-      </motion.div>      {/* Next */}
-        <button
-          onClick={(e) => {
-            e.stopPropagation();
-            onNext();
-          }}
-          className="absolute right-4 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-white/10 text-white backdrop-blur-sm transition-all duration-200 hover:bg-white/20"
-          aria-label="Next image"
-        >
+      </motion.div>
+
+      {/* Next */}
+      <button
+        onClick={(e) => {
+          e.stopPropagation();
+          onNext();
+        }}
+        className="absolute right-4 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-white/10 text-white backdrop-blur-sm transition-all duration-200 hover:bg-white/20"
+        aria-label="Next image"
+      >
         <ChevronRight className="h-6 w-6" />
       </button>
     </motion.div>
@@ -220,8 +221,7 @@ export default function GalleryPage() {
   }, [lightboxOpen, closeLightbox, goToPrev, goToNext]);
 
   return (
-    <div className="flex min-h-screen flex-col">
-      <Navbar />
+    <>
       <main className="flex-1">
         <div className="relative overflow-hidden">
           <div
@@ -259,7 +259,6 @@ export default function GalleryPage() {
           </div>
         </div>
       </main>
-      <Footer />
 
       {/* Lightbox */}
       <AnimatePresence>
@@ -273,6 +272,6 @@ export default function GalleryPage() {
           />
         )}
       </AnimatePresence>
-    </div>
+    </>
   );
 }

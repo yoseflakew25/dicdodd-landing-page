@@ -3,9 +3,10 @@
 import * as React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { BLUR_PLACEHOLDER } from "@/lib/placeholders";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { cn } from "@/lib/utils";
 
@@ -18,12 +19,28 @@ const NAV_LINKS = [
   { href: "/contact", label: "Contact" },
 ] as const;
 
+/* Sections on the homepage to spy on for active link highlighting.
+   The id must match the section's DOM id AND the hash in NAV_LINKS. */
+const SCROLL_SPY_IDS = ["about", "impact"] as const;
+
 export function Navbar() {
   const pathname = usePathname();
+  const router = useRouter();
   const isHome = pathname === "/";
   const [open, setOpen] = React.useState(false);
   const [scrolled, setScrolled] = React.useState(!isHome);
+  const [hash, setHash] = React.useState("");
+  const [activeSection, setActiveSection] = React.useState("");
   const sentinelRef = React.useRef<HTMLDivElement>(null);
+
+  // Track URL hash so we can highlight the correct nav link
+  // for both in-page hash links (/#about, /#impact) and full pages.
+  React.useEffect(() => {
+    setHash(window.location.hash);
+    const onHashChange = () => setHash(window.location.hash);
+    window.addEventListener("hashchange", onHashChange);
+    return () => window.removeEventListener("hashchange", onHashChange);
+  }, [pathname]);
 
   React.useEffect(() => {
     setOpen(false);
@@ -66,13 +83,129 @@ export function Navbar() {
     return () => observer.disconnect();
   }, [isHome]);
 
+  // ── Scroll-spy: highlight hash-linked nav items based on scroll position ──
+  // Only active on the homepage. Uses IntersectionObserver to detect which
+  // section is most visible in the viewport and updates activeSection.
+  // This works alongside the hash state — hash wins when the user clicks a
+  // link, scroll spy fills in when the user scrolls naturally.
+  React.useEffect(() => {
+    if (pathname !== "/") {
+      setActiveSection("");
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        // Pick the entry with the highest intersection ratio
+        const best = entries.reduce<IntersectionObserverEntry | null>(
+          (acc, entry) =>
+            entry.isIntersecting && (!acc || entry.intersectionRatio > acc.intersectionRatio)
+              ? entry
+              : acc,
+          null
+        );
+
+        if (best) {
+          setActiveSection(best.target.id);
+        } else if (window.scrollY < 80) {
+          // Near the top of the page → no section active
+          setActiveSection("");
+        }
+        // Otherwise keep the last active section (between sections)
+      },
+      {
+        // Account for sticky navbar (≈64px) + some breathing room
+        rootMargin: "-80px 0px -40% 0px",
+        threshold: [0, 0.5, 1],
+      }
+    );
+
+    const elements = SCROLL_SPY_IDS
+      .map((id) => document.getElementById(id))
+      .filter((el): el is HTMLElement => el !== null);
+
+    elements.forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+  }, [pathname]);
+
+  // After each page navigation, check if we need to smooth-scroll
+  // to a hash that was stored by the click handler (cross-page hash links).
+  React.useEffect(() => {
+    const scrollToId = sessionStorage.getItem("dicdo_scroll_to");
+    if (scrollToId) {
+      sessionStorage.removeItem("dicdo_scroll_to");
+      const timer = setTimeout(() => {
+        document.getElementById(scrollToId)?.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 150);
+      return () => clearTimeout(timer);
+    }
+  }, [pathname]);
+
+  // Smooth-scroll handler for hash links.
+  // Same-page: scrolls immediately and updates the URL hash.
+  // Cross-page: stores the target in sessionStorage, navigates to the base
+  // page, then the effect above picks it up and scrolls after render.
+  const handleSmoothScroll = React.useCallback(
+    (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+      const hashIndex = href.indexOf("#");
+      if (hashIndex === -1) return; // regular link, let Next.js handle it
+
+      const targetId = href.slice(hashIndex + 1);
+      if (!targetId) return;
+
+      const basePath = href.slice(0, hashIndex) || "/";
+      e.preventDefault();
+
+      if (pathname === basePath) {
+        // ── Same page: smooth scroll directly ──
+        const el = document.getElementById(targetId);
+        if (el) {
+          el.scrollIntoView({ behavior: "smooth", block: "start" });
+          window.history.replaceState(null, "", href);
+        }
+      } else {
+        // ── Cross-page: navigate, then the effect above scrolls ──
+        sessionStorage.setItem("dicdo_scroll_to", targetId);
+        router.push(basePath);
+      }
+    },
+    [pathname, router]
+  );
+
+  // Attach smooth-scroll to any hash link
+  const smoothClick = (href: string) => (e: React.MouseEvent<HTMLAnchorElement>) =>
+    handleSmoothScroll(e, href);
+
   const isActive = React.useCallback(
     (href: string) => {
-      if (href === "/") return pathname === href;
-      if (href.startsWith("#")) return false;
+      const hashIndex = href.indexOf("#");
+
+      // ── Home: only active on root with NO hash/scroll-spy section ──
+      if (href === "/") {
+        return pathname === "/" && !hash && !activeSection;
+      }
+
+      if (hashIndex !== -1) {
+        // ── Hash link like "/#about" ──
+        const basePath = href.slice(0, hashIndex) || "/";
+        const targetHash = href.slice(hashIndex);        // "#about"
+        const targetId = targetHash.replace("#", "");   // "about"
+
+        if (pathname === basePath) {
+          // Active when hash matches (user clicked link) OR scroll spy sees this section
+          return hash === targetHash || activeSection === targetId;
+        }
+
+        // Also active when on a dedicated page that corresponds
+        // (e.g. "/about" page matches navbar "About" link href="/#about")
+        const pagePath = targetId;
+        return pathname === `/${pagePath}` || pathname === pagePath;
+      }
+
+      // ── Regular page link (no hash) ──
       return pathname === href || pathname.startsWith(`${href}/`);
     },
-    [pathname]
+    [pathname, hash, activeSection]
   );
 
   const navLinkClass = (href: string) =>
@@ -81,7 +214,7 @@ export function Navbar() {
       scrolled
         ? "text-muted-foreground hover:bg-primary/10 hover:text-primary"
         : "text-foreground/70 hover:bg-primary/10 hover:text-primary",
-      isActive(href) && (scrolled ? "bg-primary/15 text-primary" : "bg-primary/15 text-primary")
+      isActive(href) && "bg-primary/15 text-primary"
     );
 
   return (
@@ -115,6 +248,8 @@ export function Navbar() {
               alt="DICDO Logo"
               width={256}
               height={128}
+              placeholder="blur"
+              blurDataURL={BLUR_PLACEHOLDER}
               className="object-contain"
               priority
             />
@@ -123,7 +258,7 @@ export function Navbar() {
           {/* Desktop navigation */}
           <nav className="hidden items-center gap-0.5 lg:flex" aria-label="Main navigation">
             {NAV_LINKS.map((l) => (
-              <Link key={l.label} href={l.href} className={navLinkClass(l.href)}>
+              <Link key={l.label} href={l.href} className={navLinkClass(l.href)} onClick={smoothClick(l.href)}>
                 {l.label}
               </Link>
             ))}
@@ -141,6 +276,7 @@ export function Navbar() {
             />
             <Link
               href="/#support"
+              onClick={smoothClick("/#support")}
               className="rounded-lg bg-primary px-6 py-2.5 text-sm font-semibold text-primary-foreground shadow-sm transition-all duration-200 hover:bg-primary/90 hover:shadow-md"
             >
               Donate
@@ -192,7 +328,12 @@ export function Navbar() {
                   <Link
                     key={l.label}
                     href={l.href}
-                    onClick={() => setOpen(false)}
+                    onClick={(e) => {
+                      // Close mobile menu
+                      setOpen(false);
+                      // Smooth scroll for hash links
+                      smoothClick(l.href)(e);
+                    }}
                     className={cn(
                       "rounded-md px-3 py-2.5 text-sm font-medium transition-colors duration-200",
                       isActive(l.href)
@@ -207,7 +348,10 @@ export function Navbar() {
 
               <Link
                 href="/#support"
-                onClick={() => setOpen(false)}
+                onClick={(e) => {
+                  setOpen(false);
+                  smoothClick("/#support")(e);
+                }}
                 className="flex w-full items-center justify-center rounded-lg bg-primary px-4 py-3 text-sm font-medium text-primary-foreground shadow-sm transition-all duration-200"
               >
                 Donate Now

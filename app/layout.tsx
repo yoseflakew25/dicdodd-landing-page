@@ -2,6 +2,10 @@ import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { Providers } from "./providers";
+import { Navbar } from "@/components/layout/navbar";
+import { Footer } from "@/components/layout/footer";
+import { PageTransition } from "@/components/page-transition";
+import { ScrollToTop } from "@/components/landing/scroll-to-top";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -57,7 +61,16 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       </head>
       <body className={`${inter.variable} font-sans`}>
-        <Providers>{children}</Providers>
+        <Providers>
+          <div className="flex min-h-screen flex-col">
+            <Navbar />
+            <PageTransition>
+              {children}
+            </PageTransition>
+            <Footer />
+            <ScrollToTop />
+          </div>
+        </Providers>
       </body>
     </html>
   );

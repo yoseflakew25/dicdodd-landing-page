@@ -3,8 +3,6 @@ import Link from "next/link";
 import { ArrowRight, Heart, Target, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { FadeIn, StaggerContainer, StaggerItem } from "@/components/ui/motion";
-import { Navbar } from "@/components/layout/navbar";
-import { Footer } from "@/components/layout/footer";
 
 export const metadata: Metadata = {
   title: "About DICDO – Our Mission, Vision & Core Values",
@@ -40,9 +38,7 @@ const CORE_VALUES = [
 
 export default function AboutPage() {
   return (
-    <div className="flex min-h-screen flex-col">
-      <Navbar />
-      <main className="flex-1">
+    <main className="flex-1">
         {/* Hero + Mission & Vision */}
         <section className="primary-band relative overflow-hidden">
           <div
@@ -164,7 +160,5 @@ export default function AboutPage() {
           </div>
         </section>
       </main>
-      <Footer />
-    </div>
   );
 }

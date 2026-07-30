@@ -14,9 +14,7 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { FadeIn, StaggerContainer, StaggerItem } from "@/components/ui/motion";
-import { Navbar } from "@/components/layout/navbar";
 import { cn } from "@/lib/utils";
-import { Footer } from "@/components/layout/footer";
 import { NEWS_ARTICLES, type NewsArticle } from "@/data/news";
 
 const CATEGORY_ICONS: Record<string, LucideIcon> = {
@@ -154,9 +152,7 @@ export default function NewsPage() {
   };
 
   return (
-    <div className="flex min-h-screen flex-col">
-      <Navbar />
-      <main className="flex-1">
+    <main className="flex-1">
         {/* Hero */}
         <section className="primary-band relative overflow-hidden py-28">
           <div
@@ -217,7 +213,5 @@ export default function NewsPage() {
           </div>
         </section>
       </main>
-      <Footer />
-    </div>
   );
 }
