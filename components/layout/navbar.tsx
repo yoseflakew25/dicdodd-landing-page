@@ -23,6 +23,7 @@ export function Navbar() {
   const isHome = pathname === "/";
   const [open, setOpen] = React.useState(false);
   const [scrolled, setScrolled] = React.useState(!isHome);
+  const sentinelRef = React.useRef<HTMLDivElement>(null);
 
   React.useEffect(() => {
     setOpen(false);
@@ -35,15 +36,34 @@ export function Navbar() {
     };
   }, [open]);
 
-  // Track scroll position for glass effect
+  // Track scroll position for glass effect using IntersectionObserver
   React.useEffect(() => {
-    if (!isHome) return; // always glass on subpages
-    const onScroll = () => {
-      setScrolled(window.scrollY > 20);
-    };
-    window.addEventListener("scroll", onScroll, { passive: true });
-    onScroll();
-    return () => window.removeEventListener("scroll", onScroll);
+    if (!isHome) {
+      setScrolled(true);
+      return;
+    }
+
+    const sentinel = sentinelRef.current;
+    if (!sentinel) {
+      // Fallback scroll listener in case sentinel is not available
+      const onScroll = () => {
+        const isScrolled = window.scrollY > 20;
+        setScrolled((prev) => (prev !== isScrolled ? isScrolled : prev));
+      };
+      window.addEventListener("scroll", onScroll, { passive: true });
+      onScroll();
+      return () => window.removeEventListener("scroll", onScroll);
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setScrolled(!entry.isIntersecting);
+      },
+      { threshold: 0 }
+    );
+
+    observer.observe(sentinel);
+    return () => observer.disconnect();
   }, [isHome]);
 
   const isActive = React.useCallback(
@@ -65,26 +85,29 @@ export function Navbar() {
     );
 
   return (
-    <header
-      className={cn(
-        "sticky top-0 z-40 w-full transition-all duration-200 ease-out",
-        scrolled ? "py-3 px-4 md:px-8 lg:px-12" : "py-0 px-0"
-      )}
-    >
-      <div
+    <>
+      {/* Invisible sentinel element at the absolute top to detect scroll position without scroll events */}
+      <div ref={sentinelRef} className="absolute top-0 left-0 right-0 h-5 pointer-events-none" />
+      <header
         className={cn(
-          "mx-auto transition-all duration-200 ease-out w-full overflow-hidden",
-          scrolled
-            ? "max-w-7xl rounded-2xl border border-border/60 bg-white/80 shadow-md backdrop-blur-xl dark:bg-gray-900/80"
-            : "border-b border-transparent bg-transparent"
+          "sticky top-0 z-40 w-full",
+          scrolled ? "py-3 px-4 md:px-8 lg:px-12" : "py-0 px-0"
         )}
       >
         <div
           className={cn(
-            "flex h-16 items-center justify-between gap-4 transition-all duration-200 ease-out",
-            scrolled ? "px-6 md:px-10" : "md:px-12 px-4"
+            "mx-auto transition duration-200 ease-out w-full overflow-hidden",
+            scrolled
+              ? "max-w-7xl rounded-2xl border border-border/60 bg-white/80 shadow-md backdrop-blur-xl dark:bg-gray-900/80"
+              : "border-b border-transparent bg-transparent"
           )}
         >
+          <div
+            className={cn(
+              "flex h-16 items-center justify-between gap-4",
+              scrolled ? "px-6 md:px-10" : "md:px-12 px-4"
+            )}
+          >
           {/* Logo */}
           <Link href="/" className="flex shrink-0 items-center" aria-label="DICDO home">
             <Image
@@ -194,5 +217,6 @@ export function Navbar() {
         )}
       </div>
     </header>
+    </>
   );
 }
