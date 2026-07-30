@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, BookOpen, Users, Heart, Droplets, Banknote, Phone, Mail } from "lucide-react";
+import { BookOpen, Users, Heart, Droplets, Banknote, Phone, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { FadeIn, StaggerContainer, StaggerItem } from "@/components/ui/motion";
 

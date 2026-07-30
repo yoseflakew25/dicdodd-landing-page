@@ -38,6 +38,7 @@ function GalleryImg({
   }
 
   return (
+    // eslint-disable-next-line @next/next/no-img-element
     <img
       src={src}
       alt={alt}
@@ -148,11 +149,9 @@ function Lightbox({
 /* ------------------------------------------------------------------ */
 function GalleryCard({
   image,
-  index,
   onClick,
 }: {
   image: (typeof GALLERY_IMAGES)[number];
-  index: number;
   onClick: () => void;
 }) {
   return (
@@ -239,7 +238,6 @@ export default function GalleryPage() {
                     <StaggerItem key={image.id}>
                       <GalleryCard
                         image={image}
-                        index={index}
                         onClick={() => openLightbox(index)}
                       />
                     </StaggerItem>

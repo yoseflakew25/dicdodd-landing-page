@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, Heart, Target, Eye, Users } from "lucide-react";
+import { ArrowRight, Heart, Target, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { FadeIn, StaggerContainer, StaggerItem } from "@/components/ui/motion";
 import { Navbar } from "@/components/layout/navbar";

@@ -35,7 +35,7 @@ const COLUMNS = [
 ] as const;
 
 const CONTACT_ITEMS = [
-  { icon: MapPin, text: "Dire Dawa, Kebele 03 Area, Ethiopia" },
+  { icon: MapPin, text: "Dire Dawa, Kebele 03 Area, Ethiopia", href: undefined },
   { icon: Mail, text: "dicdodd@gmail.com", href: "mailto:dicdodd@gmail.com" },
   { icon: Phone, text: "+251 915005166", href: "tel:+251915005166" },
 ] as const;

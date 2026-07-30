@@ -82,6 +82,7 @@ function VideoListItem({
     >
       {/* Thumbnail */}
       <div className="relative aspect-video w-24 shrink-0 overflow-hidden rounded-lg bg-muted md:w-28">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={thumbnail}
           alt={video.title}
