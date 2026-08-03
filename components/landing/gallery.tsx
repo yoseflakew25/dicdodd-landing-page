@@ -81,7 +81,7 @@ export function Gallery() {
         {/* Heading */}
         <FadeIn direction="up">
           <div className="mb-12 max-w-2xl">
-            <span className="mb-4 inline-flex w-fit rounded-full border border-primary/30 bg-primary/5 px-3 py-1 text-[11px] font-semibold uppercase tracking-widest text-primary">
+            <span className="mb-4 inline-flex w-fit rounded-full border border-secondary/30 bg-secondary/5 px-3 py-1 text-[11px] font-semibold uppercase tracking-widest text-secondary">
               Photo Gallery
             </span>
             <h2 className="text-3xl font-semibold tracking-tight text-foreground">

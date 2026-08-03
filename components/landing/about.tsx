@@ -58,7 +58,7 @@ export function About() {
             <div>
               <Badge
                 variant="outline"
-                className="mb-4 w-fit border-primary/30 bg-primary/5 px-3 py-1 text-[11px] font-semibold uppercase tracking-widest text-primary"
+                className="mb-4 w-fit border-secondary/30 bg-secondary/5 px-3 py-1 text-[11px] font-semibold uppercase tracking-widest text-secondary"
               >
                 About DICDO
               </Badge>
@@ -113,7 +113,7 @@ export function About() {
                 <Button
                   variant="outline"
                   size="lg"
-                  className="border-primary/30 text-primary hover:bg-primary/5 hover:text-primary"
+                  className="border-secondary text-secondary hover:bg-secondary/10 hover:text-secondary dark:border-secondary dark:text-secondary dark:hover:bg-secondary/20"
                   asChild
                 >
                   <Link href="/#about">Learn More</Link>
@@ -126,7 +126,7 @@ export function About() {
           <FadeIn direction="right">
             {/* Core Values */}
             <div className="mb-8">
-              <h3 className="text-sm font-semibold uppercase tracking-widest text-primary">
+              <h3 className="text-sm font-semibold uppercase tracking-widest text-secondary">
                 Our Core Values
               </h3>
               <div className="mt-4 grid grid-cols-2 gap-3">
@@ -135,7 +135,7 @@ export function About() {
                     key={title}
                     className="group rounded-xl border border-border/60 bg-white/70 p-4 shadow-sm backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-md dark:bg-white/[0.04]"
                   >
-                    <Icon className="h-5 w-5 text-primary transition-colors duration-300" />
+                    <Icon className="h-5 w-5 text-secondary transition-colors duration-300" />
                     <h4 className="mt-2 text-sm font-semibold text-foreground">{title}</h4>
                     <p className="mt-1 text-xs leading-relaxed text-muted-foreground">{description}</p>
                   </div>

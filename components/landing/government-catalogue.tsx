@@ -75,7 +75,7 @@ export function GovernmentCatalogue() {
         {/* Heading */}
         <FadeIn direction="up">
           <div className="mx-auto mb-14 max-w-2xl text-center">
-            <span className="mb-4 inline-flex w-fit rounded-full border border-primary/30 bg-primary/5 px-3 py-1 text-[11px] font-semibold uppercase tracking-widest text-primary">
+            <span className="mb-4 inline-flex w-fit rounded-full border border-secondary/30 bg-secondary/5 px-3 py-1 text-[11px] font-semibold uppercase tracking-widest text-secondary">
               Our Partners
             </span>
             <h2 className="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">

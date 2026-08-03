@@ -64,15 +64,15 @@ export function Hero() {
         <div className="container relative z-10 mx-auto flex flex-col justify-center px-6 py-20 lg:px-16 lg:py-0">
           <Badge
             variant="outline"
-            className="mb-4 w-fit border-primary/30 bg-primary/5 px-3 py-1 text-[11px] font-semibold uppercase tracking-widest text-primary"
+            className="mb-4 w-fit border-secondary/30 bg-secondary/5 px-3 py-1 text-[11px] font-semibold uppercase tracking-widest text-secondary"
           >
             Transforming Communities Since 2014
           </Badge>
 
-          <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-[3.5rem] lg:leading-[1.1]">
+          <h1 className="text-4xl font-bold tracking-tight text-primary sm:text-5xl lg:text-[3.5rem] lg:leading-[1.1]">
             Building
             <br />
-            <span className="text-primary">Peaceful Communities</span>
+            <span className="text-secondary">Peaceful Communities</span>
             <br />
             Together
           </h1>
@@ -92,7 +92,7 @@ export function Hero() {
             <Button
               variant="outline"
               size="lg"
-              className="border-primary/30 text-primary hover:bg-primary/5 hover:text-primary"
+              className="border-secondary text-secondary hover:bg-secondary/10 hover:text-secondary dark:border-secondary dark:text-secondary dark:hover:bg-secondary/20"
               asChild
             >
               <Link href="/contact">
@@ -108,7 +108,7 @@ export function Hero() {
                 key={label}
                 className="inline-flex items-center gap-1.5 rounded-full border border-border/60 bg-background/80 px-2.5 py-1"
               >
-                <Icon className="h-3.5 w-3.5 text-primary" aria-hidden />
+                <Icon className="h-3.5 w-3.5 text-secondary" aria-hidden />
                 {label}
               </span>
             ))}

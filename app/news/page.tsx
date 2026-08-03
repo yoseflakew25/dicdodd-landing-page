@@ -29,7 +29,7 @@ const CATEGORY_COLORS: Record<string, string> = {
   Recognition:
     "border-accent/30 bg-accent/5 text-accent",
   Peacebuilding:
-    "border-primary/30 bg-primary/5 text-primary",
+    "border-secondary/30 bg-secondary/5 text-secondary",
   Empowerment:
     "border-emerald-500/30 bg-emerald-50 text-emerald-600 dark:bg-emerald-500/10 dark:text-emerald-400",
   Expansion:

@@ -13,14 +13,14 @@ export function HeroCtaButtons() {
       <Button
         variant="outline"
         size="lg"
-        className="border-primary/30 text-primary hover:bg-primary/5 hover:text-primary"
+        className="border-secondary text-secondary hover:bg-secondary/10 hover:text-secondary dark:border-secondary dark:text-secondary dark:hover:bg-secondary/20"
         asChild
       >
         <Link href="#impact">Watch Our Impact</Link>
       </Button>
       <Button
         size="lg"
-        className="bg-accent text-accent-foreground hover:bg-accent/90"
+        className="bg-secondary text-white hover:bg-secondary/90"
         asChild
       >
         <Link href="/contact">

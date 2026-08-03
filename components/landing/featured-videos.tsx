@@ -149,7 +149,7 @@ export function FeaturedVideos() {
         {/* ---- Heading ---- */}
         <FadeIn direction="up">
           <div className="mb-12 max-w-2xl">
-            <span className="mb-4 inline-flex w-fit rounded-full border border-primary/30 bg-primary/5 px-3 py-1 text-[11px] font-semibold uppercase tracking-widest text-primary">
+            <span className="mb-4 inline-flex w-fit rounded-full border border-secondary/30 bg-secondary/5 px-3 py-1 text-[11px] font-semibold uppercase tracking-widest text-secondary">
               Impact Stories
             </span>
             <h2 className="text-3xl font-semibold tracking-tight text-foreground">
@@ -174,9 +174,9 @@ export function FeaturedVideos() {
                   : "border-border/60 bg-white/70 hover:-translate-y-1 hover:border-primary/30 hover:shadow-lg dark:bg-white/[0.04]"
               )}
             >
-              <Quote className="h-6 w-6 text-primary/30" />
+              <Quote className="h-6 w-6 text-secondary" />
               <h3 className="mt-2 text-base font-semibold text-foreground">{story.title}</h3>
-              <span className="mt-1 inline-flex rounded-full bg-accent/10 px-2.5 py-0.5 text-[10px] font-medium text-accent">
+              <span className="mt-1 inline-flex rounded-full border border-secondary/30 bg-secondary/10 px-2.5 py-0.5 text-[10px] font-medium text-secondary">
                 {story.subtitle}
               </span>
               <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{story.description}</p>
@@ -187,7 +187,7 @@ export function FeaturedVideos() {
         {/* ---- Videos Grid ---- */}
         <FadeIn direction="up">
           <div className="mb-6">
-            <span className="inline-flex w-fit rounded-full border border-accent/30 bg-accent/5 px-3 py-1 text-[11px] font-semibold uppercase tracking-widest text-accent">
+            <span className="inline-flex w-fit rounded-full border border-secondary/30 bg-secondary/5 px-3 py-1 text-[11px] font-semibold uppercase tracking-widest text-secondary">
               Watch Our Impact
             </span>
           </div>

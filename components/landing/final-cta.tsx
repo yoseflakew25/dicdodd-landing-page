@@ -35,7 +35,7 @@ export function FinalCTA() {
           <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
             <Button
               size="lg"
-              className="bg-white text-primary shadow-none hover:bg-white/90 dark:bg-white dark:text-primary dark:hover:bg-white/90"
+              className="bg-secondary text-white shadow-md hover:bg-secondary/90 dark:bg-secondary dark:text-white dark:hover:bg-secondary/90"
               asChild
             >
               <Link href="#features">
@@ -45,7 +45,7 @@ export function FinalCTA() {
             <Button
               size="lg"
               variant="outline"
-              className="border-white/35 bg-transparent text-white shadow-none hover:bg-white/10 hover:text-white dark:border-white/35 dark:bg-transparent dark:text-white dark:hover:bg-white/10 dark:hover:text-white"
+              className="border-2 border-white/35 bg-transparent text-white shadow-none hover:bg-white/10 hover:text-white dark:border-white/35 dark:bg-transparent dark:text-white dark:hover:bg-white/10"
               asChild
             >
               <Link href="#how-it-works">How it works</Link>

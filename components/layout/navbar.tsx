@@ -210,11 +210,11 @@ export function Navbar() {
 
   const navLinkClass = (href: string) =>
     cn(
-      "rounded-md px-3 py-2 text-sm font-medium transition-colors duration-200",
+      "rounded-md px-3 py-2 text-sm font-medium transition-all duration-200",
       scrolled
-        ? "text-muted-foreground hover:bg-primary/10 hover:text-primary"
-        : "text-foreground/70 hover:bg-primary/10 hover:text-primary",
-      isActive(href) && "bg-primary/15 text-primary"
+        ? "text-muted-foreground hover:bg-secondary/10 hover:text-secondary"
+        : "text-foreground/70 hover:bg-secondary/10 hover:text-secondary",
+      isActive(href) && "bg-secondary/15 text-secondary font-semibold border-b-2 border-secondary rounded-b-none"
     );
 
   return (
@@ -241,126 +241,126 @@ export function Navbar() {
               scrolled ? "px-6 md:px-10" : "md:px-12 px-4"
             )}
           >
-          {/* Logo */}
-          <Link href="/" className="flex shrink-0 items-center" aria-label="DICDO home">
-            <Image
-              src="/images/logo.png"
-              alt="DICDO Logo"
-              width={256}
-              height={128}
-              placeholder="blur"
-              blurDataURL={BLUR_PLACEHOLDER}
-              className="object-contain"
-              priority
-            />
-          </Link>
-
-          {/* Desktop navigation */}
-          <nav className="hidden items-center gap-0.5 lg:flex" aria-label="Main navigation">
-            {NAV_LINKS.map((l) => (
-              <Link key={l.label} href={l.href} className={navLinkClass(l.href)} onClick={smoothClick(l.href)}>
-                {l.label}
-              </Link>
-            ))}
-          </nav>
-
-          {/* Desktop actions */}
-          <div className="hidden items-center gap-2 lg:flex">
-            <ThemeToggle
-              className={cn(
-                "transition-colors duration-200",
-                scrolled
-                  ? "text-muted-foreground hover:bg-primary/10 hover:text-primary"
-                  : "text-foreground/70 hover:bg-primary/10 hover:text-primary"
-              )}
-            />
-            <Link
-              href="/#support"
-              onClick={smoothClick("/#support")}
-              className="rounded-lg bg-primary px-6 py-2.5 text-sm font-semibold text-primary-foreground shadow-sm transition-all duration-200 hover:bg-primary/90 hover:shadow-md"
-            >
-              Donate
+            {/* Logo */}
+            <Link href="/" className="flex shrink-0 items-center" aria-label="DICDO home">
+              <Image
+                src="/images/logo.svg"
+                alt="DICDO Logo"
+                width={256}
+                height={128}
+                placeholder="blur"
+                blurDataURL={BLUR_PLACEHOLDER}
+                className="object-contain"
+                priority
+              />
             </Link>
-          </div>
 
-          {/* Mobile menu button */}
-          <div className="flex items-center gap-1 lg:hidden">
-            <ThemeToggle
-              className={cn(
-                "transition-colors duration-200",
-                scrolled
-                  ? "text-muted-foreground hover:bg-accent/10 hover:text-accent"
-                  : "text-foreground/70 hover:bg-primary/10 hover:text-primary"
-              )}
-            />
-            <Button
-              variant="outline"
-              size="icon"
-              className={cn(
-                "h-9 w-9 shrink-0 transition-colors duration-200",
-                scrolled
-                  ? "border-border/60 text-muted-foreground"
-                  : "border-foreground/20 text-foreground/70"
-              )}
-              onClick={() => setOpen((o) => !o)}
-              aria-label={open ? "Close menu" : "Open menu"}
-              aria-expanded={open}
-              aria-controls="mobile-nav"
-            >
-              {open ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
-            </Button>
-          </div>
-        </div>
+            {/* Desktop navigation */}
+            <nav className="hidden items-center gap-0.5 lg:flex" aria-label="Main navigation">
+              {NAV_LINKS.map((l) => (
+                <Link key={l.label} href={l.href} className={navLinkClass(l.href)} onClick={smoothClick(l.href)}>
+                  {l.label}
+                </Link>
+              ))}
+            </nav>
 
-        {/* Mobile menu */}
-        {open && (
-          <div
-            className={cn(
-              "border-t lg:hidden transition-all duration-300",
-              scrolled
-                ? "border-border/60 bg-transparent"
-                : "border-foreground/10 bg-white/95 backdrop-blur-xl dark:bg-gray-900/95"
-            )}
-          >
-            <div className="container space-y-4 px-6 py-4 lg:px-8">
-              <nav className="flex flex-col gap-1" aria-label="Mobile navigation">
-                {NAV_LINKS.map((l) => (
-                  <Link
-                    key={l.label}
-                    href={l.href}
-                    onClick={(e) => {
-                      // Close mobile menu
-                      setOpen(false);
-                      // Smooth scroll for hash links
-                      smoothClick(l.href)(e);
-                    }}
-                    className={cn(
-                      "rounded-md px-3 py-2.5 text-sm font-medium transition-colors duration-200",
-                      isActive(l.href)
-                        ? "bg-primary/15 text-primary"
-                        : "text-muted-foreground hover:bg-primary/10 hover:text-primary"
-                    )}
-                  >
-                    {l.label}
-                  </Link>
-                ))}
-              </nav>
-
+            {/* Desktop actions */}
+            <div className="hidden items-center gap-2 lg:flex">
+              <ThemeToggle
+                className={cn(
+                  "transition-colors duration-200",
+                  scrolled
+                    ? "text-muted-foreground hover:bg-secondary/10 hover:text-secondary"
+                    : "text-foreground/70 hover:bg-secondary/10 hover:text-secondary"
+                )}
+              />
               <Link
                 href="/#support"
-                onClick={(e) => {
-                  setOpen(false);
-                  smoothClick("/#support")(e);
-                }}
-                className="flex w-full items-center justify-center rounded-lg bg-primary px-4 py-3 text-sm font-medium text-primary-foreground shadow-sm transition-all duration-200"
+                onClick={smoothClick("/#support")}
+                className="rounded-lg bg-primary px-6 py-2.5 text-sm font-semibold text-primary-foreground shadow-sm transition-all duration-200 hover:bg-primary/90 hover:shadow-md"
               >
-                Donate Now
+                Donate
               </Link>
             </div>
+
+            {/* Mobile menu button */}
+            <div className="flex items-center gap-1 lg:hidden">
+              <ThemeToggle
+                className={cn(
+                  "transition-colors duration-200",
+                  scrolled
+                    ? "text-muted-foreground hover:bg-secondary/10 hover:text-secondary"
+                    : "text-foreground/70 hover:bg-secondary/10 hover:text-secondary"
+                )}
+              />
+              <Button
+                variant="outline"
+                size="icon"
+                className={cn(
+                  "h-9 w-9 shrink-0 transition-colors duration-200",
+                  scrolled
+                    ? "border-border/60 text-muted-foreground"
+                    : "border-foreground/20 text-foreground/70"
+                )}
+                onClick={() => setOpen((o) => !o)}
+                aria-label={open ? "Close menu" : "Open menu"}
+                aria-expanded={open}
+                aria-controls="mobile-nav"
+              >
+                {open ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
+              </Button>
+            </div>
           </div>
-        )}
-      </div>
-    </header>
+
+          {/* Mobile menu */}
+          {open && (
+            <div
+              className={cn(
+                "border-t lg:hidden transition-all duration-300",
+                scrolled
+                  ? "border-border/60 bg-transparent"
+                  : "border-foreground/10 bg-white/95 backdrop-blur-xl dark:bg-gray-900/95"
+              )}
+            >
+              <div className="container space-y-4 px-6 py-4 lg:px-8">
+                <nav className="flex flex-col gap-1" aria-label="Mobile navigation">
+                  {NAV_LINKS.map((l) => (
+                    <Link
+                      key={l.label}
+                      href={l.href}
+                      onClick={(e) => {
+                        // Close mobile menu
+                        setOpen(false);
+                        // Smooth scroll for hash links
+                        smoothClick(l.href)(e);
+                      }}
+                      className={cn(
+                        "rounded-md px-3 py-2.5 text-sm font-medium transition-colors duration-200",
+                        isActive(l.href)
+                          ? "bg-secondary/15 text-secondary"
+                          : "text-muted-foreground hover:bg-secondary/10 hover:text-secondary"
+                      )}
+                    >
+                      {l.label}
+                    </Link>
+                  ))}
+                </nav>
+
+                <Link
+                  href="/#support"
+                  onClick={(e) => {
+                    setOpen(false);
+                    smoothClick("/#support")(e);
+                  }}
+                  className="flex w-full items-center justify-center rounded-lg bg-primary px-4 py-3 text-sm font-medium text-primary-foreground shadow-sm transition-all duration-200"
+                >
+                  Donate Now
+                </Link>
+              </div>
+            </div>
+          )}
+        </div>
+      </header>
     </>
   );
 }

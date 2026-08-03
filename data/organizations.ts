@@ -66,7 +66,7 @@ export const organizations: Organization[] = [
     id: "media",
     name: "Media Partners",
     shortName: "Media",
-    logo: "/images/partners/Media Partners.jpeg",
+    logo: "/images/partners/Media Partners.png",
     description:
       "Television and radio stations including Dire Television",
     category: "Media Partner",

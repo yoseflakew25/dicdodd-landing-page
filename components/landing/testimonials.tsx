@@ -34,7 +34,7 @@ export function Testimonials() {
         {/* Heading */}
         <FadeIn direction="up">
           <div className="mb-12">
-            <p className="mb-2 text-xs font-semibold uppercase tracking-widest text-primary">
+            <p className="mb-2 text-xs font-semibold uppercase tracking-widest text-secondary">
               Citizen Stories
             </p>
             <h2 className="max-w-xl text-3xl font-semibold tracking-tight text-foreground">
@@ -50,7 +50,7 @@ export function Testimonials() {
               <StaggerItem key={name}>
                 <div className="group relative flex flex-col gap-4 rounded-xl border border-border/80 bg-background p-6 transition-all duration-300 ease-out hover:-translate-y-1 hover:border-primary/30 hover:shadow-card-hover active:translate-y-0">
                   {/* Quote mark */}
-                  <span className="text-5xl font-serif leading-none text-primary-500 select-none">
+                  <span className="text-5xl font-serif leading-none text-secondary select-none">
                     &ldquo;
                   </span>
 
@@ -60,7 +60,7 @@ export function Testimonials() {
 
                   {/* Author */}
                   <div className="flex items-center gap-3 border-t border-border/50 pt-5 transition-colors duration-300 group-hover:border-primary/20">
-                    <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-primary/20 bg-primary/5 text-xs font-semibold text-primary transition-all duration-300 group-hover:border-primary/40 group-hover:bg-primary/10">
+                    <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-secondary/20 bg-secondary/5 text-xs font-semibold text-secondary transition-all duration-300 group-hover:border-secondary/40 group-hover:bg-secondary/10">
                       {initials}
                     </div>
                     <div>

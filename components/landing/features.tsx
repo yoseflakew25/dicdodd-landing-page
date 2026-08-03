@@ -105,7 +105,7 @@ export function Features() {
         {/* Heading */}
         <FadeIn direction="up">
           <div className="mb-12 max-w-3xl">
-            <span className="mb-4 inline-flex w-fit rounded-full border border-primary/30 bg-primary/5 px-3 py-1 text-[11px] font-semibold uppercase tracking-widest text-primary">
+            <span className="mb-4 inline-flex w-fit rounded-full border border-secondary/30 bg-secondary/5 px-3 py-1 text-[11px] font-semibold uppercase tracking-widest text-secondary">
               Our Programs
             </span>
             <h2 className="text-3xl font-semibold tracking-tight text-foreground">
@@ -139,8 +139,8 @@ export function Features() {
               <StaggerItem key={title}>
                 <div className="group flex h-full flex-col rounded-2xl border border-border/60 bg-white p-6 shadow-sm transition-all duration-300 ease-out hover:-translate-y-1 hover:border-primary/30 hover:shadow-lg dark:bg-white/[0.04]">
                   {/* Icon */}
-                  <div className="flex h-11 w-11 items-center justify-center rounded-xl border border-primary/20 bg-primary/5 transition-all duration-300 group-hover:border-primary/30 group-hover:bg-primary/10">
-                    <Icon className="h-5 w-5 text-primary" />
+                  <div className="flex h-11 w-11 items-center justify-center rounded-xl border border-secondary/20 bg-secondary/5 transition-all duration-300 group-hover:border-secondary/30 group-hover:bg-secondary/10">
+                    <Icon className="h-5 w-5 text-secondary" />
                   </div>
 
                   {/* Title */}
@@ -154,7 +154,7 @@ export function Features() {
 
                   {/* Activities list */}
                   <div className="mt-4 flex-1">
-                    <p className="text-[11px] font-semibold uppercase tracking-wider text-accent">
+                    <p className="text-[11px] font-semibold uppercase tracking-wider text-primary">
                       Key Activities:
                     </p>
                     <ul className="mt-2 space-y-2">
@@ -187,7 +187,7 @@ export function Features() {
               <Button
                 variant="outline"
                 size="lg"
-                className="border-primary/30 text-primary hover:bg-primary/5 hover:text-primary"
+                className="border-secondary text-secondary hover:bg-secondary/10 hover:text-secondary dark:border-secondary dark:text-secondary dark:hover:bg-secondary/20"
                 asChild
               >
                 <Link href="/#about">Learn More</Link>

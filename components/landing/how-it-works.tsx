@@ -62,7 +62,7 @@ export function HowItWorks() {
         <div className="grid gap-12 lg:grid-cols-5 lg:gap-16">
           {/* Left — Heading + Info */}
           <FadeIn direction="left" className="lg:col-span-2 lg:pt-2">
-            <span className="mb-4 inline-flex w-fit rounded-full border border-primary/30 bg-primary/5 px-3 py-1 text-[11px] font-semibold uppercase tracking-widest text-primary">
+            <span className="mb-4 inline-flex w-fit rounded-full border border-secondary/30 bg-secondary/5 px-3 py-1 text-[11px] font-semibold uppercase tracking-widest text-secondary">
               Support Our Mission
             </span>
             <h2 className="text-3xl font-semibold tracking-tight text-foreground">
@@ -78,8 +78,8 @@ export function HowItWorks() {
               {DONATION_TIERS.map(({ icon: Icon, amount, description }) => (
                 <StaggerItem key={amount}>
                   <div className="group flex items-start gap-4 rounded-xl border border-border/60 bg-white/70 p-4 shadow-sm backdrop-blur-xl transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/30 hover:shadow-md dark:bg-white/[0.04]">
-                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-primary/20 bg-primary/5 transition-all duration-300 group-hover:border-primary/30 group-hover:bg-primary/10">
-                      <Icon className="h-5 w-5 text-primary" />
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-secondary/20 bg-secondary/5 transition-all duration-300 group-hover:border-secondary/30 group-hover:bg-secondary/10">
+                      <Icon className="h-5 w-5 text-secondary" />
                     </div>
                     <div>
                       <p className="text-sm font-semibold text-foreground">{amount}</p>
@@ -95,7 +95,7 @@ export function HowItWorks() {
           <FadeIn direction="right" className="lg:col-span-3">
             {/* Bank Accounts */}
             <div className="mb-6">
-              <h3 className="text-sm font-semibold uppercase tracking-widest text-primary">
+              <h3 className="text-sm font-semibold uppercase tracking-widest text-secondary">
                 Bank Account Information
               </h3>
               <p className="mt-2 text-sm text-muted-foreground">
@@ -111,8 +111,8 @@ export function HowItWorks() {
                   className="group rounded-2xl border border-border/60 bg-white/70 p-6 shadow-sm backdrop-blur-xl transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/30 hover:shadow-lg dark:bg-white/[0.04]"
                 >
                   <div className="flex items-start gap-4">
-                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary/10">
-                      <Banknote className="h-6 w-6 text-primary" />
+                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-secondary/10">
+                      <Banknote className="h-6 w-6 text-secondary" />
                     </div>
                     <div className="min-w-0 flex-1">
                       <p className="text-sm font-semibold text-foreground">{bank}</p>

@@ -158,7 +158,7 @@ export function ContactForm() {
               <Button
                 variant="outline"
                 size="sm"
-                className="mt-6 border-primary/30 text-primary hover:bg-primary/5 hover:text-primary"
+                className="mt-6 border-secondary text-secondary hover:bg-secondary/10 hover:text-secondary dark:border-secondary dark:text-secondary dark:hover:bg-secondary/20"
                 onClick={() => {
                   setStatus("idle");
                   setForm({ name: "", email: "", subject: "", message: "" });
@@ -196,7 +196,7 @@ export function ContactForm() {
           <div className="mb-14 max-w-2xl">
             <Badge
               variant="outline"
-              className="mb-4 w-fit border-primary/30 bg-primary/5 px-3 py-1 text-[11px] font-semibold uppercase tracking-widest text-primary"
+              className="mb-4 w-fit border-secondary/30 bg-secondary/5 px-3 py-1 text-[11px] font-semibold uppercase tracking-widest text-secondary"
             >
               Get in Touch
             </Badge>
@@ -228,33 +228,33 @@ export function ContactForm() {
                       ? "noopener noreferrer"
                       : undefined
                   }
-                  className="group flex items-start gap-4 rounded-2xl border border-border/60 bg-white/70 p-5 shadow-sm backdrop-blur-xl transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/30 hover:shadow-md dark:bg-white/[0.04]"
+                  className="group flex items-start gap-4 rounded-2xl border border-border/60 bg-white/70 p-5 shadow-sm backdrop-blur-xl transition-all duration-300 hover:-translate-y-0.5 hover:border-secondary/30 hover:shadow-md dark:bg-white/[0.04]"
                 >
-                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-primary/20 bg-primary/5 transition-all duration-300 group-hover:border-primary/30 group-hover:bg-primary/10">
-                    <Icon className="h-5 w-5 text-primary" />
+                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-secondary/20 bg-secondary/5 transition-all duration-300 group-hover:border-secondary/30 group-hover:bg-secondary/10">
+                    <Icon className="h-5 w-5 text-secondary" />
                   </div>
                   <div className="min-w-0 flex-1">
                     <p className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
                       {label}
                     </p>
-                    <p className="mt-0.5 text-sm font-medium text-foreground transition-colors duration-300 group-hover:text-primary">
+                    <p className="mt-0.5 text-sm font-medium text-foreground transition-colors duration-300 group-hover:text-secondary">
                       {value}
                     </p>
                     <p className="mt-0.5 text-xs text-muted-foreground/70">{detail}</p>
                   </div>
-                  <ArrowUpRight className="mt-1 h-4 w-4 shrink-0 text-muted-foreground/30 transition-all duration-300 group-hover:text-primary group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                  <ArrowUpRight className="mt-1 h-4 w-4 shrink-0 text-muted-foreground/30 transition-all duration-300 group-hover:text-secondary group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                 </a>
               ))}
 
               {/* Extra contacts */}
-              <div className="rounded-2xl border border-dashed border-primary/20 bg-primary/[0.02] p-5">
+              <div className="rounded-2xl border border-dashed border-secondary/20 bg-secondary/[0.02] p-5">
                 <p className="text-xs font-medium text-foreground/80">Also reach us at:</p>
                 <div className="mt-3 flex flex-wrap gap-x-6 gap-y-1.5">
                   {EXTRA_CONTACTS.map(({ label, href }) => (
                     <a
                       key={label}
                       href={href}
-                      className="inline-flex items-center gap-1 text-xs text-primary transition-colors hover:text-primary/70"
+                      className="inline-flex items-center gap-1 text-xs text-secondary transition-colors hover:text-secondary/70"
                     >
                       {href.startsWith("tel") ? <Phone className="h-3 w-3" /> : <Mail className="h-3 w-3" />}
                       {label}
@@ -377,7 +377,7 @@ export function ContactForm() {
 
               {/* Submit row */}
               <div className="mt-6 flex flex-col-reverse items-start justify-between gap-4 border-t border-border/50 pt-6 sm:flex-row sm:items-center">
-                <Badge variant="outline" className="border-primary/30 bg-primary/5 text-[10px] text-primary">
+                <Badge variant="outline" className="border-secondary/30 bg-secondary/5 text-[10px] text-secondary">
                   <Clock className="mr-1 h-3 w-3" />
                   We respond within 1–2 business days
                 </Badge>

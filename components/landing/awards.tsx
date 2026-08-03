@@ -76,7 +76,7 @@ export function Awards() {
         <FadeIn direction="up">
           <div className="mb-12 flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
             <div className="max-w-xl">
-              <span className="mb-4 inline-flex w-fit rounded-full border border-white/30 bg-white/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-widest text-white">
+              <span className="mb-4 inline-flex w-fit rounded-full border border-secondary/40 bg-secondary/15 px-3 py-1 text-[11px] font-semibold uppercase tracking-widest text-secondary">
                 Recognition
               </span>
               <h2 className="text-3xl font-semibold tracking-tight text-primary-foreground sm:text-4xl">
@@ -94,7 +94,7 @@ export function Awards() {
                 onClick={prev}
                 disabled={active === 0}
                 aria-label="Previous award"
-                className="flex h-9 w-9 items-center justify-center rounded-full border border-white/20 bg-white/5 text-white transition-all hover:bg-white/15 disabled:cursor-not-allowed disabled:opacity-30"
+                className="flex h-9 w-9 items-center justify-center rounded-full border border-secondary/40 bg-secondary/15 text-secondary transition-all hover:bg-secondary/30 disabled:cursor-not-allowed disabled:opacity-30"
               >
                 <ChevronLeft className="h-4 w-4" />
               </button>
@@ -102,7 +102,7 @@ export function Awards() {
                 onClick={next}
                 disabled={active >= total - 1}
                 aria-label="Next award"
-                className="flex h-9 w-9 items-center justify-center rounded-full border border-white/20 bg-white/5 text-white transition-all hover:bg-white/15 disabled:cursor-not-allowed disabled:opacity-30"
+                className="flex h-9 w-9 items-center justify-center rounded-full border border-secondary/40 bg-secondary/15 text-secondary transition-all hover:bg-secondary/30 disabled:cursor-not-allowed disabled:opacity-30"
               >
                 <ChevronRight className="h-4 w-4" />
               </button>
@@ -188,7 +188,7 @@ export function Awards() {
               onClick={prev}
               disabled={active === 0}
               aria-label="Previous award"
-              className="flex h-8 w-8 items-center justify-center rounded-full border border-white/20 bg-white/5 text-white transition-all hover:bg-white/15 disabled:opacity-30"
+              className="flex h-8 w-8 items-center justify-center rounded-full border border-secondary/40 bg-secondary/15 text-secondary transition-all hover:bg-secondary/30 disabled:opacity-30"
             >
               <ChevronLeft className="h-4 w-4" />
             </button>
@@ -196,7 +196,7 @@ export function Awards() {
               onClick={next}
               disabled={active >= total - 1}
               aria-label="Next award"
-              className="flex h-8 w-8 items-center justify-center rounded-full border border-white/20 bg-white/5 text-white transition-all hover:bg-white/15 disabled:opacity-30"
+              className="flex h-8 w-8 items-center justify-center rounded-full border border-secondary/40 bg-secondary/15 text-secondary transition-all hover:bg-secondary/30 disabled:opacity-30"
             >
               <ChevronRight className="h-4 w-4" />
             </button>
@@ -212,8 +212,8 @@ export function Awards() {
               aria-label={`Go to award ${i + 1}`}
               className={`h-1.5 rounded-full transition-all duration-300 ${
                 i === active
-                  ? "w-6 bg-white"
-                  : "w-1.5 bg-white/30 hover:bg-white/60"
+                  ? "w-6 bg-secondary"
+                  : "w-1.5 bg-secondary/40 hover:bg-secondary/70"
               }`}
             />
           ))}

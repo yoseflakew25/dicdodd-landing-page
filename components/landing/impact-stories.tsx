@@ -41,7 +41,7 @@ export function ImpactStories() {
         {/* Heading */}
         <FadeIn direction="up">
           <div className="mb-12 max-w-2xl">
-            <span className="mb-4 inline-flex w-fit rounded-full border border-white/30 bg-white/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-widest text-white">
+            <span className="mb-4 inline-flex w-fit rounded-full border border-secondary/40 bg-secondary/15 px-3 py-1 text-[11px] font-semibold uppercase tracking-widest text-secondary">
               Impact Stories
             </span>
             <h2 className="text-3xl font-semibold tracking-tight text-primary-foreground">
@@ -57,12 +57,12 @@ export function ImpactStories() {
         <div className="grid gap-6 md:grid-cols-2">
           {IMPACT_STORIES.map((story) => (
             <FadeIn key={story.id} direction="up">
-              <div className="group flex h-full flex-col rounded-2xl border border-white/25 bg-transparent p-6 transition-all duration-300 hover:-translate-y-1 hover:border-white/70">
-                <Quote className="h-8 w-8 text-white/30" />
+              <div className="group flex h-full flex-col rounded-2xl border border-white/25 bg-transparent p-6 transition-all duration-300 hover:-translate-y-1 hover:border-secondary/60">
+                <Quote className="h-8 w-8 text-secondary" />
                 <h3 className="mt-3 text-lg font-semibold text-primary-foreground">
                   {story.title}
                 </h3>
-                <span className="mt-1.5 inline-flex w-fit rounded-full border border-white/30 px-3 py-0.5 text-[11px] font-medium text-white/80">
+                <span className="mt-1.5 inline-flex w-fit rounded-full border border-secondary/40 bg-secondary/15 px-3 py-0.5 text-[11px] font-medium text-secondary">
                   {story.subtitle}
                 </span>
                 <p className="mt-4 flex-1 text-sm leading-relaxed text-primary-foreground/75">

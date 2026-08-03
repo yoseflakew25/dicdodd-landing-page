@@ -66,7 +66,8 @@ export function Footer() {
           </p>
           <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
             <Button
-              className="bg-white text-primary hover:bg-white/90"
+              size="lg"
+              className="bg-secondary text-white hover:bg-secondary/90"
               asChild
             >
               <Link href="/#support">
@@ -76,7 +77,8 @@ export function Footer() {
             </Button>
             <Button
               variant="outline"
-              className="border-white/35 bg-transparent text-white shadow-none hover:bg-white/10 hover:text-white"
+              size="lg"
+              className="border-2 border-white/35 bg-transparent text-white shadow-none hover:bg-white/10 hover:text-white"
               asChild
             >
               <Link href="/#about">About DICDO</Link>
@@ -91,16 +93,16 @@ export function Footer() {
           {/* Brand */}
           <div className="lg:col-span-2">
             <Link href="/" aria-label="DICDO home">
-            <Image
-              src="/images/logo.png"
-              alt="DICDO Logo"
-              width={256}
-              height={128}
-              placeholder="blur"
-              blurDataURL={BLUR_PLACEHOLDER}
-              className="object-contain h-14 w-auto"
-            />
-          </Link>
+              <Image
+                src="/images/logo.svg"
+                alt="DICDO Logo"
+                width={256}
+                height={128}
+                placeholder="blur"
+                blurDataURL={BLUR_PLACEHOLDER}
+                className="object-contain h-14 w-auto"
+              />
+            </Link>
             <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
               Dire Integrated Community Development Organization (DICDO) is a nonprofit
               working to empower communities in Ethiopia through peacebuilding, essential
@@ -110,7 +112,7 @@ export function Footer() {
               {CONTACT_ITEMS.map(({ icon: Icon, text, href }) => {
                 const content = (
                   <div className="flex items-center gap-2.5 text-sm text-muted-foreground">
-                    <Icon className="h-4 w-4 shrink-0 text-primary" />
+                    <Icon className="h-4 w-4 shrink-0 text-secondary" />
                     <span>{text}</span>
                   </div>
                 );
@@ -129,7 +131,7 @@ export function Footer() {
           {/* Columns */}
           {COLUMNS.map((col) => (
             <div key={col.title}>
-              <h3 className="text-xs font-semibold uppercase tracking-widest text-primary">
+              <h3 className="text-xs font-semibold uppercase tracking-widest text-secondary">
                 {col.title}
               </h3>
               <ul className="mt-4 space-y-2">
@@ -156,7 +158,7 @@ export function Footer() {
             &copy; {new Date().getFullYear()} DICDO. All rights reserved.
           </p>
           <span className="inline-flex items-center gap-1.5 text-xs text-muted-foreground/60">
-            <Heart className="h-3 w-3 text-primary/60" />
+            <Heart className="h-3 w-3 text-secondary/60" />
             Building Peace &bull; Creating Hope &bull; Empowering Communities
           </span>
         </div>
