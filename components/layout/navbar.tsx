@@ -231,7 +231,7 @@ export function Navbar() {
           className={cn(
             "mx-auto transition duration-200 ease-out w-full overflow-hidden",
             scrolled
-              ? "max-w-7xl rounded-2xl border border-border/60 bg-white/80 shadow-md backdrop-blur-xl dark:bg-gray-900/80"
+              ? "max-w-7xl rounded-2xl border border-border/60 bg-white/80 shadow-md backdrop-blur-xl dark:bg-background/80"
               : "border-b border-transparent bg-transparent"
           )}
         >
@@ -319,7 +319,7 @@ export function Navbar() {
                 "border-t lg:hidden transition-all duration-300",
                 scrolled
                   ? "border-border/60 bg-transparent"
-                  : "border-foreground/10 bg-white/95 backdrop-blur-xl dark:bg-gray-900/95"
+                  : "border-foreground/10 bg-white/95 backdrop-blur-xl dark:bg-background/95"
               )}
             >
               <div className="container space-y-4 px-6 py-4 lg:px-8">
