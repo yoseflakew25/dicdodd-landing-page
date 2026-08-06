@@ -50,6 +50,7 @@ function GalleryImg({
       alt={alt}
       className={className}
       loading={priority ? undefined : "lazy"}
+      decoding="async"
       fetchPriority={priority ? "high" : undefined}
       onError={() => setFailed(true)}
     />

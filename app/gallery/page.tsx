@@ -12,11 +12,78 @@ import { cn } from "@/lib/utils";
 /* ------------------------------------------------------------------ */
 /*  Real gallery images — d1.jpg through d35.jpg                      */
 /* ------------------------------------------------------------------ */
-const GALLERY_IMAGES = Array.from({ length: 35 }, (_, i) => ({
+const GALLERY_BASE = Array.from({ length: 35 }, (_, i) => ({
   id: i + 1,
   src: `/images/gallery/d${i + 1}.jpg`,
   alt: `DICDO Gallery Image ${i + 1}`,
 }));
+
+/* ------------------------------------------------------------------ */
+/*  Impact story images — Dire Dawa & Harar                           */
+/* ------------------------------------------------------------------ */
+const DIREDAWA_SRCS = [
+  "/images/impact/diredawa/photo_2026-04-05_14-01-29.jpg",
+  "/images/impact/diredawa/photo_2026-04-05_14-01-31.jpg",
+  "/images/impact/diredawa/photo_2026-04-05_14-01-32.jpg",
+  "/images/impact/diredawa/photo_2026-04-05_14-01-34.jpg",
+  "/images/impact/diredawa/photo_2026-04-05_14-01-35.jpg",
+  "/images/impact/diredawa/photo_2026-04-05_14-01-38.jpg",
+  "/images/impact/diredawa/photo_2026-04-05_14-01-41.jpg",
+  "/images/impact/diredawa/photo_2026-04-05_14-01-42.jpg",
+  "/images/impact/diredawa/photo_2026-04-05_14-01-49.jpg",
+  "/images/impact/diredawa/photo_2026-04-05_14-02-10.jpg",
+  "/images/impact/diredawa/photo_2026-06-21_18-14-53.jpg",
+  "/images/impact/diredawa/photo_2026-06-21_18-14-55.jpg",
+  "/images/impact/diredawa/photo_2026-06-22_02-48-07.jpg",
+  "/images/impact/diredawa/photo_2026-06-22_02-58-22.jpg",
+  "/images/impact/diredawa/photo_2026-06-22_02-59-30.jpg",
+  "/images/impact/diredawa/photo_2026-06-22_02-59-32 (2).jpg",
+  "/images/impact/diredawa/photo_2026-06-22_02-59-32.jpg",
+];
+
+const HARAR_SRCS = [
+  "/images/impact/harar/_DSC9154.JPG",
+  "/images/impact/harar/_DSC9163.JPG",
+  "/images/impact/harar/_DSC9178.JPG",
+  "/images/impact/harar/_DSC9319.JPG",
+  "/images/impact/harar/_DSC9347.JPG",
+  "/images/impact/harar/_DSC9356.JPG",
+  "/images/impact/harar/_DSC9365.JPG",
+  "/images/impact/harar/_DSC9374.JPG",
+  "/images/impact/harar/_DSC9380.JPG",
+  "/images/impact/harar/photo_2026-05-22_14-01-17.jpg",
+  "/images/impact/harar/photo_2026-05-22_14-01-19.jpg",
+  "/images/impact/harar/photo_2026-05-22_14-01-20.jpg",
+  "/images/impact/harar/photo_2026-05-22_14-01-21 (2).jpg",
+  "/images/impact/harar/photo_2026-05-22_14-01-21.jpg",
+  "/images/impact/harar/photo_2026-05-22_14-01-22.jpg",
+  "/images/impact/harar/photo_2026-05-22_14-01-23.jpg",
+  "/images/impact/harar/photo_2026-05-22_14-01-24.jpg",
+  "/images/impact/harar/photo_2026-05-22_14-01-25.jpg",
+  "/images/impact/harar/photo_2026-08-05_16-40-10.jpg",
+];
+
+const IMPACT_IMAGES = [
+  ...DIREDAWA_SRCS.map((src, i) => ({
+    id: i + 1,
+    src,
+    alt: `DICDO Impact – Dire Dawa ${i + 1}`,
+  })),
+  ...HARAR_SRCS.map((src, i) => ({
+    id: DIREDAWA_SRCS.length + i + 1,
+    src,
+    alt: `DICDO Impact – Harar ${i + 1}`,
+  })),
+];
+
+/* Latest images (impact stories) first, then the general gallery */
+const GALLERY_IMAGES = [
+  ...IMPACT_IMAGES,
+  ...GALLERY_BASE.map((img, i) => ({
+    ...img,
+    id: IMPACT_IMAGES.length + i + 1,
+  })),
+];
 
 /* ------------------------------------------------------------------ */
 /*  Safe image with fallback (uses next/image for optimization)       */
@@ -50,6 +117,7 @@ function GalleryImg({
       alt={alt}
       className={className}
       loading="lazy"
+      decoding="async"
       onError={() => setFailed(true)}
     />
   );

@@ -14,14 +14,14 @@ const NAV_LINKS = [
   { href: "/", label: "Home" },
   { href: "/#about", label: "About" },
   { href: "/services", label: "Programs" },
-  { href: "/#impact", label: "Impact" },
+  { href: "/impact", label: "Impact" },
   { href: "/gallery", label: "Gallery" },
   { href: "/contact", label: "Contact" },
 ] as const;
 
 /* Sections on the homepage to spy on for active link highlighting.
    The id must match the section's DOM id AND the hash in NAV_LINKS. */
-const SCROLL_SPY_IDS = ["about", "impact"] as const;
+const SCROLL_SPY_IDS = ["about"] as const;
 
 export function Navbar() {
   const pathname = usePathname();

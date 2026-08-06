@@ -41,8 +41,25 @@ export function Hero() {
   }, []);
 
   useEffect(() => {
-    const interval = setInterval(nextSlide, 5000);
-    return () => clearInterval(interval);
+    // Pause auto-advance while the tab is hidden to save CPU/battery.
+    let interval: ReturnType<typeof setInterval> | undefined;
+    const onVisibility = () => {
+      if (document.visibilityState === "visible") {
+        if (!interval) interval = setInterval(nextSlide, 5000);
+      } else {
+        if (interval) {
+          clearInterval(interval);
+          interval = undefined;
+        }
+      }
+    };
+
+    onVisibility();
+    document.addEventListener("visibilitychange", onVisibility);
+    return () => {
+      document.removeEventListener("visibilitychange", onVisibility);
+      if (interval) clearInterval(interval);
+    };
   }, [nextSlide]);
 
   return (
