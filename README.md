@@ -4,7 +4,7 @@ A modern, responsive **Next.js 15** landing page for **Dire Integrated Community
 
 ---
 
-![Uploading Screenshot 2026-08-21 130505.png…]()
+![DICDO Landing Page](/public/images/Screenshot%202026-08-21%20130505.png)
 
 
 ## 🌟 About DICDO
