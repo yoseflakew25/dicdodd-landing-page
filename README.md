@@ -1,11 +1,10 @@
-## DICDO — Dire Integrated Community Development Organization
+## DICDO Landing Page — Dire Integrated Community Development Organization
 
-A modern, responsive Next.js 15 web application for **Dire Integrated Community Development Organization (DICDO)**, an indigenous, non-governmental, and non-political non-profit operating across Ethiopia.
+A modern, responsive **Next.js 15** landing page for **Dire Integrated Community Development Organization (DICDO)**, an indigenous, non-governmental, and non-political non-profit operating across Ethiopia.
 
 ---
 
 ![Uploading Screenshot 2026-08-21 130505.png…]()
-
 
 
 ## 🌟 About DICDO
@@ -37,7 +36,7 @@ Founded in 2015, DICDO works to empower local communities—especially women, yo
 
 ```text
 ├── .github/workflows/    # Automated CI/CD deployment scripts
-├── app/                  # Next.js App Router (Pages, Layouts, Routes)
+├── app/                  # Next.js App Router
 │   ├── about/            # About DICDO page
 │   ├── gallery/          # Media & impact stories gallery
 │   └── page.tsx          # Main landing page
@@ -46,7 +45,7 @@ Founded in 2015, DICDO works to empower local communities—especially women, yo
 │   └── ui/               # Base UI & shadcn components
 ├── data/                 # Static content, partners, FAQs, and media metadata
 ├── lib/                  # Helper utilities and shared functions
-├── public/               # Images, certificates, assets, and branding logos
+├── public/               # Images, certificates, assets, branding logos
 └── types/                # Shared TypeScript interfaces
 ```
 
@@ -55,35 +54,32 @@ Founded in 2015, DICDO works to empower local communities—especially women, yo
 ## 💻 Getting Started
 
 ### Prerequisites
-
-- Node.js 18+ or [Bun](https://bun.sh/) installed on your machine.
+- Node.js 18+ **or** Bun installed.
 
 ### Local Setup
 
-1. **Clone the repository:**
-
+1. **Clone:**
 ```bash
 git clone https://github.com/yoseflakew25/dicdodd-landing-page.git
 cd dicdodd-landing-page
 ```
 
 2. **Install dependencies:**
-
 ```bash
 bun install
 # or
 npm install
 ```
 
-3. **Start the development server:**
-
+3. **Run development server:**
 ```bash
 bun dev
 # or
 npm run dev
 ```
 
-4. Open [http://localhost:3000](https://www.google.com/search?q=http://localhost:3000) in your browser to view the application.
+4. **Open:**
+- Visit `http://localhost:3000`
 
 ---
 
@@ -91,23 +87,22 @@ npm run dev
 
 This project uses Next.js static site generation (SSG) with `output: 'export'`.
 
-To build the project for static hosting:
-
+Build for static hosting:
 ```bash
 bun run build
 # or
 npm run build
 ```
 
-The compiled, production-ready static files will be exported to the `out/` directory.
+The production static files are exported to the `out/` directory.
 
 ---
 
 ## 📞 Contact & Support
 
-- **Executive Director:** Mr. Demissie Afework
+- **Executive Director:** Mr. Demissie Afework  
 - **Address:** Dire Dawa, Kebele 03 Area, Ethiopia (Offices in Dire Dawa & Addis Ababa)
-- **Email:** [dicdodd@gmail.com](https://www.google.com/search?q=mailto%3Adicdodd%40gmail.com) | [demessafworke12@gmail.com](https://www.google.com/search?q=mailto%3Ademessafworke12%40gmail.com)
+- **Email:** [dicdodd@gmail.com](mailto:dicdodd@gmail.com) | [demessafworke12@gmail.com](mailto:demessafworke12@gmail.com)
 - **Phone:** +251 915005166 | +251 975047055 | +251 911435422
 
 ---
@@ -116,3 +111,7 @@ The compiled, production-ready static files will be exported to the `out/` direc
 
 *Building Peace • Creating Hope • Empowering Communities*
 ```
+
+---
+
+If you want, paste your **current GitHub README.md** (exact text), and I’ll rewrite it to match this landing-page version perfectly (including removing the screenshot placeholder and formatting the image section nicely).
