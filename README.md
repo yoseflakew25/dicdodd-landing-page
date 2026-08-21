@@ -1,4 +1,4 @@
-<img width="1900" height="905" alt="Screenshot 2026-08-21 130505" src="https://github.com/user-attachments/assets/8ada1db9-8fb7-4f97-8291-950072ff9c7f" /><img width="1899" height="913" alt="image" src="https://github.com/user-attachments/assets/59b84c9b-b37f-4ee0-9f38-4f769ceadf3c" /># DICDO — Dire Integrated Community Development Organization
+## DICDO — Dire Integrated Community Development Organization
 
 A modern, responsive Next.js 15 web application for **Dire Integrated Community Development Organization (DICDO)**, an indigenous, non-governmental, and non-political non-profit operating across Ethiopia.
 
