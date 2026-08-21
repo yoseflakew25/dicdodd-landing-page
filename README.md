@@ -1,76 +1,119 @@
-# ChainEstate — Blockchain Real Estate Marketplace (Frontend)
+<img width="1899" height="913" alt="image" src="https://github.com/user-attachments/assets/59b84c9b-b37f-4ee0-9f38-4f769ceadf3c" /># DICDO — Dire Integrated Community Development Organization
 
-A frontend-only, production-quality demo of a blockchain-enabled real estate
-marketplace. Property ownership, agent authorization, and ownership transfers
-are simulated with **mock blockchain services** (no backend, no smart contracts,
-no database).
+A modern, responsive Next.js 15 web application for **Dire Integrated Community Development Organization (DICDO)**, an indigenous, non-governmental, and non-political non-profit operating across Ethiopia.
 
-> ⚠️ This app is a standalone **Next.js 15** project. It does **not** run inside
-> the Lovable preview (which uses TanStack Start). Run it locally with the steps
-> below.
+---
 
-## Tech Stack
+![Uploading Screenshot 2026-08-21 130505.png…]()
 
-- **Next.js 15** (App Router) + **React 19** + **TypeScript**
-- **Tailwind CSS** + **shadcn/ui** (custom design system, dark/light mode)
-- **React Hook Form** + **Zod** (forms & validation)
-- **Zustand** (wallet, auth, saved-properties stores)
-- **TanStack Query** (data fetching from mock API)
-- **Ethers.js** (mock wallet / tx hashes / address validation)
-- **Leaflet + react-leaflet** (interactive property map)
 
-## Getting Started
+
+
+## 🌟 About DICDO
+
+Founded in 2015, DICDO works to empower local communities—especially women, youth, and vulnerable groups—by providing tools, knowledge, and resources to build a sustainable, resilient, and peaceful future.
+
+### Core Focus Areas & Programs
+
+- **Peacebuilding & Conflict Resolution:** Community dialogue facilitation, conflict mediation, and election observation (NEBE accredited observer during the 7th General Election).
+- **Education & Literacy:** Primary education support, adult literacy programs, and educational material distribution.
+- **Women's & Youth Empowerment:** Vocational skills training, microfinance, and leadership development.
+- **Health, Nutrition & WASH:** Mobile health clinics, maternal/child care, clean water well construction, and hygiene education.
+- **Environmental Protection:** Reforestation projects, waste management systems, and climate change education.
+
+---
+
+## 🚀 Tech Stack
+
+- **Framework:** Next.js 15 (App Router, Static Export)
+- **Language:** TypeScript
+- **Styling & UI:** Tailwind CSS, shadcn/ui
+- **Icons & Animation:** Lucide React, Framer Motion
+- **Package Manager:** Bun / npm
+- **Deployment:** Vercel / GitHub Pages
+
+---
+
+## 📂 Project Structure
+
+```text
+├── .github/workflows/    # Automated CI/CD deployment scripts
+├── app/                  # Next.js App Router (Pages, Layouts, Routes)
+│   ├── about/            # About DICDO page
+│   ├── gallery/          # Media & impact stories gallery
+│   └── page.tsx          # Main landing page
+├── components/           # React components
+│   ├── landing/          # Hero, Programs, Impact Stories, FAQ, Contact forms
+│   └── ui/               # Base UI & shadcn components
+├── data/                 # Static content, partners, FAQs, and media metadata
+├── lib/                  # Helper utilities and shared functions
+├── public/               # Images, certificates, assets, and branding logos
+└── types/                # Shared TypeScript interfaces
+```
+
+---
+
+## 💻 Getting Started
+
+### Prerequisites
+
+- Node.js 18+ or [Bun](https://bun.sh/) installed on your machine.
+
+### Local Setup
+
+1. **Clone the repository:**
 
 ```bash
-cd frontend
-npm install      # or: pnpm install / bun install
+git clone https://github.com/yoseflakew25/dicdodd-landing-page.git
+cd dicdodd-landing-page
+```
+
+2. **Install dependencies:**
+
+```bash
+bun install
+# or
+npm install
+```
+
+3. **Start the development server:**
+
+```bash
+bun dev
+# or
 npm run dev
 ```
 
-Open http://localhost:3000.
+4. Open [http://localhost:3000](https://www.google.com/search?q=http://localhost:3000) in your browser to view the application.
 
-## Project Structure
+---
 
-```
-frontend/
-├── app/                      # App Router routes
-│   ├── page.tsx              # Landing page
-│   ├── login/  register/     # Auth
-│   ├── marketplace/          # Property listing (grid/list, filters, sort)
-│   ├── property/[id]/        # Property details + map + verification
-│   └── dashboard/            # owner | agent | buyer | admin
-├── components/
-│   ├── ui/                   # shadcn primitives
-│   ├── layout/               # navbar, footer
-│   ├── landing/              # hero, features, stats
-│   ├── property/             # card, filters, gallery, map, verification
-│   ├── wallet/               # wallet connect + status card
-│   └── dashboard/            # shell, stat cards
-├── features/                 # ownership transfer, agent authorization flows
-├── hooks/                    # TanStack Query hooks
-├── lib/                      # utils, zod schemas
-├── services/                 # mock-api, mock-blockchain, mock-data
-├── store/                    # zustand stores
-├── types/                    # shared TypeScript interfaces
-└── public/                   # hero illustration + assets
+## 🛠️ Build & Static Export
+
+This project uses Next.js static site generation (SSG) with `output: 'export'`.
+
+To build the project for static hosting:
+
+```bash
+bun run build
+# or
+npm run build
 ```
 
-## Mock Blockchain
+The compiled, production-ready static files will be exported to the `out/` directory.
 
-`services/mock-blockchain.ts` simulates wallet connection, network switching,
-ownership verification, agent authorization/revocation, and ownership transfers.
-It uses Ethers.js to generate realistic addresses and transaction hashes and to
-validate wallet addresses — all client-side, with artificial latency.
+---
 
-## Demo Logins
+## 📞 Contact & Support
 
-The login form is pre-filled with a demo owner account. Any valid email maps to
-a mock user; you can also register a new account and pick a role
-(Owner / Agent / Buyer) to land on the matching dashboard.
+- **Executive Director:** Mr. Demissie Afework
+- **Address:** Dire Dawa, Kebele 03 Area, Ethiopia (Offices in Dire Dawa & Addis Ababa)
+- **Email:** [dicdodd@gmail.com](https://www.google.com/search?q=mailto%3Adicdodd%40gmail.com) | [demessafworke12@gmail.com](https://www.google.com/search?q=mailto%3Ademessafworke12%40gmail.com)
+- **Phone:** +251 915005166 | +251 975047055 | +251 911435422
 
-## Notes
+---
 
-All data is mock and resets on reload (except wallet/auth/saved state, which is
-persisted to `localStorage` via Zustand). This build is the **foundation**:
-landing, auth, wallet, marketplace, property details, mock services, and
-role dashboard overviews with blockchain action flows.
+© 2026 DICDO. All Rights Reserved.
+
+*Building Peace • Creating Hope • Empowering Communities*
+```
